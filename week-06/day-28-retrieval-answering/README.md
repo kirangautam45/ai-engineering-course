@@ -14,20 +14,20 @@ Day 26 showed the idea with everything in memory. Today you build the real thing
 Ingest the lessons first (Day 27):
 
 ```bash
-npm run day27
+python run.py day27
 ```
 
 ## Run it
 
 ```bash
-npm run day28 -- "Why should the browser never call the LLM API directly?"
-npm run day28 -- "What does eventual consistency mean for vector search?" --k 8
-npm run day28 -- --test
+python run.py day28 "Why should the browser never call the LLM API directly?"
+python run.py day28 "What does eventual consistency mean for vector search?" --k 8
+python run.py day28 --test
 ```
 
 ## Walkthrough
 
-1. **`retrieve(question, { k })`** from [`lib/vector-store.js`](../../lib/vector-store.js) runs `$vectorSearch` and returns the chunks with their `source`, `page` and `score`.
+1. **`retrieve(question, k=k)`** from [`ailib/vector_store.py`](../../ailib/vector_store.py) runs `$vectorSearch` and returns the chunks with their `source`, `page` and `score`.
 2. **Documents first, question last.** Models answer better when the long reference material comes before the question.
 3. **The system prompt** sets three rules, each with a reason:
    - Answer only from the documents, or reply with an exact "I don't know" sentence.
@@ -37,7 +37,7 @@ npm run day28 -- --test
 
 ## Testing "I don't know"
 
-[`test-questions.js`](test-questions.js) has 10 questions: 5 the lessons answer, and 5 they don't (the exam date, a Day 50 lesson...). `--test` runs them all and marks whether the bot answered or said it didn't know.
+[`test_questions.py`](test_questions.py) has 10 questions: 5 the lessons answer, and 5 they don't (the exam date, a Day 50 lesson...). `--test` runs them all and marks whether the bot answered or said it didn't know.
 
 This check is deliberately simple. It can't tell whether an answer is **correct**, so read every answer yourself. In Week 8 you'll automate that too.
 

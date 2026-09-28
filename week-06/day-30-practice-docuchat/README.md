@@ -36,12 +36,12 @@ No new theory today. You combine Weeks 3–6 into **DocuChat**: upload your own 
 Try building it yourself first. Then:
 
 ```bash
-npm run day30
+python run.py day30
 ```
 
 Open http://localhost:3000, upload a PDF (a syllabus, a notice, or a lesson README from this repo), and ask about it.
 
-Code: [`solution/server.js`](solution/server.js) and [`solution/public/index.html`](solution/public/index.html).
+Code: [`solution/main.py`](solution/main.py) (FastAPI) and [`solution/public/index.html`](solution/public/index.html). The endpoints are plain `def` functions: PyMongo, the PDF reader and the embedding model are synchronous, and FastAPI runs plain `def` endpoints in a thread pool so they don't block each other.
 
 ## Checklist
 

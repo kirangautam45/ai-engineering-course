@@ -16,9 +16,9 @@ Same as Day 24: `MONGODB_URI` must point to MongoDB Atlas or the `atlas-local` D
 ## Run it
 
 ```bash
-npm run day27
-npm run day27
-npm run day27 -- ./my-documents
+python run.py day27
+python run.py day27
+python run.py day27 ./my-documents
 ```
 
 The first run ingests every lesson in this course. Run it again straight away: every file is **unchanged**, so nothing is re-embedded. Edit one README and run it again: only that file is updated.
@@ -29,11 +29,11 @@ To ingest your own files, put `.md`, `.txt` or `.pdf` files in a folder and pass
 
 | Step | Where | What happens |
 |---|---|---|
-| **Load** | [`lib/loaders.js`](../../lib/loaders.js) | Reads Markdown/text as-is. PDFs are read page by page with `unpdf`. |
+| **Load** | [`ailib/loaders.py`](../../ailib/loaders.py) | Reads Markdown/text as-is. PDFs are read page by page with `pypdf`. |
 | **Clean** | `cleanText()` | Removes null characters and extra spaces and blank lines, which waste tokens |
-| **Chunk** | [`lib/chunking.js`](../../lib/chunking.js) | 80-word chunks with 20 words of overlap (Day 23's winner), per page |
-| **Embed** | [`lib/embeddings.js`](../../lib/embeddings.js) | Batches of 32 chunks |
-| **Store** | [`lib/vector-store.js`](../../lib/vector-store.js) | Saves each chunk with `source`, `page`, `chunkIndex`, `hash` and `embedding` |
+| **Chunk** | [`ailib/chunking.py`](../../ailib/chunking.py) | 80-word chunks with 20 words of overlap (Day 23's winner), per page |
+| **Embed** | [`ailib/embeddings.py`](../../ailib/embeddings.py) | Batches of 32 chunks |
+| **Store** | [`ailib/vector_store.py`](../../ailib/vector_store.py) | Saves each chunk with `source`, `page`, `chunkIndex`, `hash` and `embedding` |
 
 ## Keeping the index up to date
 
@@ -61,4 +61,4 @@ Removal only happens inside the folders you scanned, so ingesting `./my-document
 
 ## Homework
 
-Add `.docx` support to `lib/loaders.js` with the `mammoth` package (`mammoth.extractRawText({ buffer })`), and ingest a Word document.
+Add `.docx` support to `ailib/loaders.py` with the `python-docx` package (`Document(io.BytesIO(data)).paragraphs`), and ingest a Word document.

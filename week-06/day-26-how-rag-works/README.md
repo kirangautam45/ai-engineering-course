@@ -12,9 +12,9 @@ Models only know what was in their training data. They don't know your college's
 ## Run it
 
 ```bash
-npm run day26
-npm run day26 -- "What does the Day 19 lesson say is the real protection against prompt injection?"
-npm run day26 -- "What is the capital of Australia?"
+python run.py day26
+python run.py day26 "What does the Day 19 lesson say is the real protection against prompt injection?"
+python run.py day26 "What is the capital of Australia?"
 ```
 
 The script asks the same question twice: once on its own, and once with the 4 most relevant chunks of this course's lessons added to the prompt.

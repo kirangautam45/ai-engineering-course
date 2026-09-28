@@ -1,0 +1,27 @@
+# Render Blueprint for DocuChat Pro (Week 9). See week-09/day-43-deployment/README.md
+# In Render: New → Blueprint → pick this repository. Render asks for each "sync: false" value.
+services:
+  - type: web
+    name: docuchat-pro
+    runtime: node
+    plan: free # 512 MB memory: use hosted embeddings (EMBEDDING_PROVIDER=openai or qwen)
+    buildCommand: npm ci && npm run warm-models
+    startCommand: npm run docuchat
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: EMBEDDING_PROVIDER # openai or qwen on the free plan (local needs ~700 MB more memory)
+        sync: false
+      - key: OPENAI_API_KEY # only if EMBEDDING_PROVIDER=openai
+        sync: false
+      - key: DASHSCOPE_API_KEY # only if EMBEDDING_PROVIDER=qwen
+        sync: false
+      - key: QWEN_BASE_URL # only if EMBEDDING_PROVIDER=qwen
+        sync: false
+      - key: ADMIN_TOKEN # protects uploads and deletes; Render generates a random one
+        generateValue: true

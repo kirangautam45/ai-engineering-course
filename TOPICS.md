@@ -369,26 +369,31 @@
 
 ## Week 9 — Capstone and Deployment (Days 41–45)
 
-### Day 41 — Capstone planning
+### Day 41 — Capstone planning ✅
 **Objective:** Scope a realistic AI project.
 **Teach:** Pick a problem, the users, the data and the success metric. Examples: a college FAQ bot, a legal-document Q&A tool, a code-review assistant or a Nepali-language study helper.
 **Homework:** A one-page project plan with an eval set of 10 questions.
+**Code:** [week-09/day-41-capstone-planning](week-09/day-41-capstone-planning)
 
-### Day 42 — Build day
+### Day 42 — Build day ✅
 **Objective:** Get the core RAG or agent flow working.
 **Build:** Ingestion, retrieval and answering, end to end.
+**Code:** [week-09/day-42-build-day](week-09/day-42-build-day)
 
-### Day 43 — Deployment
+### Day 43 — Deployment ✅
 **Objective:** Deploy the full stack.
 **Teach:**
 - Backend on Render or Railway, frontend on Vercel, MongoDB Atlas.
 - Environment variables and secrets in production. Set a spending limit on your API key.
 **Homework:** A live URL that works on your phone.
+**Code:** [week-09/day-43-deployment](week-09/day-43-deployment)
 
-### Day 44 — Polish and demo prep
+### Day 44 — Polish and demo prep ✅
 **Objective:** Make it presentable.
 **Build:** Loading states, error messages, a README with screenshots and eval scores, and a 3-minute demo script.
+**Code:** [week-09/day-44-polish-demo-prep](week-09/day-44-polish-demo-prep)
 
-### Day 45 — 🎓 Demo day
+### Day 45 — 🎓 Demo day ✅
 **Objective:** Present your deployed project.
 **Format:** Each student demos their app, shows the eval results and explains one thing they would improve next.
+**Code:** [week-09/day-45-demo-day](week-09/day-45-demo-day)

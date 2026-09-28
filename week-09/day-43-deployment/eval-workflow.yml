@@ -1,0 +1,26 @@
+# Template: runs the eval suite (Day 40) on every pull request.
+# To use it: copy this file to .github/workflows/eval.yml, then add these repository secrets
+# (Settings → Secrets and variables → Actions): ANTHROPIC_API_KEY, MONGODB_URI, and your embedding key.
+# The database must already contain your ingested documents, and Atlas must allow GitHub's runners to connect.
+name: Eval
+
+on:
+  pull_request:
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run eval -- --quick --threshold 0.8
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          EMBEDDING_PROVIDER: openai
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

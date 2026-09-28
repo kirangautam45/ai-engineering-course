@@ -49,7 +49,9 @@
     "day37": "node week-08/day-37-llm-as-judge/index.js",
     "day38": "node week-08/day-38-measuring-rag/index.js",
     "day39": "node week-08/day-39-guardrails-monitoring/server.js",
-    "eval": "node week-08/day-40-practice-eval-suite/solution/eval.js"
+    "eval": "node week-08/day-40-practice-eval-suite/solution/eval.js",
+    "docuchat": "node week-09/docuchat-pro/server.js",
+    "warm-models": "node week-09/docuchat-pro/warm-models.js"
   },
   "license": "MIT",
   "dependencies": {

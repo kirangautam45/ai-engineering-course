@@ -113,8 +113,13 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 38 | [Measuring RAG](week-08/day-38-measuring-rag) | `npm run day38` |
 | 39 | [Guardrails and monitoring](week-08/day-39-guardrails-monitoring) | `npm run day39` |
 | 40 | [🛠️ Practice: an eval suite](week-08/day-40-practice-eval-suite) | `npm run eval` |
+| 41 | [Capstone planning](week-09/day-41-capstone-planning) | Templates and ideas |
+| 42 | [Build day](week-09/day-42-build-day) | `npm run docuchat` |
+| 43 | [Deployment (Render + Atlas)](week-09/day-43-deployment) | [`render.yaml`](render.yaml) |
+| 44 | [Polish and demo prep](week-09/day-44-polish-demo-prep) | Templates |
+| 45 | [🎓 Demo day](week-09/day-45-demo-day) | Rubric |
 
-More weeks are added as the course runs. Watch the repo to get updates.
+All 45 days are complete. The capstone reference app, [DocuChat Pro](week-09/docuchat-pro), combines everything and deploys to Render with one Blueprint.
 
 ## Tooling
 

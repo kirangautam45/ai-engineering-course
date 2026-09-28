@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocuChat Pro</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 0 auto; padding: 16px; color: #111827; }
+    h1 { margin-bottom: 4px; }
+    .muted { color: #6b7280; font-size: 14px; }
+    section { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin: 16px 0; }
+    ul { list-style: none; padding: 0; margin: 8px 0 0; }
+    li { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-top: 1px solid #f3f4f6; }
+    button { font: inherit; padding: 8px 14px; border-radius: 8px; border: 0; background: #2563eb; color: white; cursor: pointer; }
+    button:disabled { background: #93c5fd; }
+    .delete { background: none; color: #dc2626; padding: 4px 8px; }
+    form { display: flex; gap: 8px; flex-wrap: wrap; }
+    input[type="text"] { flex: 1; min-width: 200px; padding: 8px; font: inherit; border: 1px solid #d1d5db; border-radius: 8px; }
+    select { padding: 8px; font: inherit; border-radius: 8px; }
+    #answer { white-space: pre-wrap; line-height: 1.6; margin-top: 12px; }
+    #chat .turn { border-top: 1px solid #f3f4f6; padding: 8px 0; white-space: pre-wrap; }
+    #chat .q { font-weight: 600; }
+    #rewritten { color: #6b7280; font-size: 13px; }
+    sup { color: #2563eb; font-weight: 600; margin-left: 1px; }
+    #sources li { display: block; font-size: 14px; }
+    #sources blockquote { margin: 4px 0 0 20px; color: #4b5563; }
+    .error { color: #dc2626; }
+  </style>
+</head>
+<body>
+  <h1>📄 DocuChat Pro</h1>
+  <p class="muted">Upload documents (.pdf, .md, .txt), then chat about them. Follow-up questions work, and every answer cites its sources.</p>
+
+  <section>
+    <h2>Documents</h2>
+    <p id="admin-row" class="muted" hidden>
+      Uploading and deleting need the admin token:
+      <input type="password" id="admin-token" placeholder="Admin token" autocomplete="off" />
+    </p>
+    <form id="upload-form">
+      <input type="file" id="file" accept=".pdf,.md,.txt" required />
+      <button id="upload-btn">Upload</button>
+    </form>
+    <p id="upload-status" class="muted"></p>
+    <ul id="documents"></ul>
+  </section>
+
+  <section>
+    <h2>Ask <button type="button" id="new-chat" class="delete">New conversation</button></h2>
+    <div id="chat"></div>
+    <form id="ask-form">
+      <input type="text" id="question" placeholder="Ask about your documents..." required />
+      <select id="source"><option value="">All documents</option></select>
+      <button id="ask-btn">Ask</button>
+    </form>
+    <div id="rewritten"></div>
+    <div id="answer"></div>
+    <ul id="sources"></ul>
+  </section>
+
+  <script type="module">
+    const $ = (id) => document.getElementById(id);
+    let conversationId = null;
+    // The admin token is kept only for this browser tab (sessionStorage), never in the page's code
+    const adminHeaders = () => {
+      const token = $("admin-token").value || sessionStorage.getItem("adminToken") || "";
+      if ($("admin-token").value) sessionStorage.setItem("adminToken", token);
+      return token ? { Authorization: `Bearer ${token}` } : {};
+    };
+    fetch("/api/config").then((r) => r.json()).then(({ adminRequired }) => { $("admin-row").hidden = !adminRequired; });
+    let lastQuestion = "";
+
+    // Move the finished answer into the chat log above, so the next question starts clean
+    function archiveTurn(question) {
+      if (!$("answer").textContent) return;
+      const turn = document.createElement("div");
+      turn.className = "turn";
+      const q = document.createElement("div");
+      q.className = "q";
+      q.textContent = question;
+      const a = document.createElement("div");
+      a.textContent = $("answer").textContent;
+      turn.append(q, a);
+      $("chat").append(turn);
+    }
+
+    $("new-chat").onclick = () => {
+      conversationId = null;
+      lastQuestion = "";
+      $("chat").replaceChildren();
+      $("answer").textContent = "";
+      $("rewritten").textContent = "";
+      $("sources").replaceChildren();
+    };
+
+    async function refreshDocuments() {
+      const docs = await fetch("/api/documents").then((r) => r.json());
+      $("documents").replaceChildren(
+        ...docs.map((d) => {
+          const li = document.createElement("li");
+          li.textContent = `${d.source} · ${d.pages} page(s) · ${d.chunks} chunks`;
+          const del = document.createElement("button");
+          del.className = "delete";
+          del.textContent = "Delete";
+          del.onclick = async () => {
+            const res = await fetch(`/api/documents/${encodeURIComponent(d.source)}`, { method: "DELETE", headers: adminHeaders() });
+            if (!res.ok) $("upload-status").textContent = `❌ ${(await res.json()).error}`;
+            refreshDocuments();
+          };
+          li.append(del);
+          return li;
+        }),
+      );
+      $("source").replaceChildren(
+        new Option("All documents", ""),
+        ...docs.map((d) => new Option(d.source, d.source)),
+      );
+    }
+
+    $("upload-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const body = new FormData();
+      body.append("file", $("file").files[0]);
+      $("upload-btn").disabled = true;
+      $("upload-status").textContent = "Uploading and indexing...";
+      const res = await fetch("/api/documents", { method: "POST", body, headers: adminHeaders() });
+      const data = await res.json();
+      $("upload-status").textContent = res.ok ? `✅ ${data.source}: ${data.result}` : `❌ ${data.error}`;
+      $("upload-btn").disabled = false;
+      $("upload-form").reset();
+      refreshDocuments();
+    });
+
+    $("ask-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      archiveTurn(lastQuestion);
+      lastQuestion = $("question").value;
+      $("rewritten").textContent = "";
+      const answer = $("answer");
+      answer.textContent = "";
+      answer.className = "";
+      $("sources").replaceChildren();
+      $("ask-btn").disabled = true;
+
+      try {
+        const res = await fetch("/api/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: $("question").value, source: $("source").value, conversationId }),
+        });
+        if (!res.ok) throw new Error((await res.json()).error);
+
+        const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
+        let buffer = "";
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buffer += value;
+          const events = buffer.split("\n\n");
+          buffer = events.pop();
+          for (const raw of events) {
+            if (!raw.startsWith("data: ")) continue;
+            const event = JSON.parse(raw.slice(6));
+            if (event.type === "conversation") {
+              conversationId = event.id;
+            } else if (event.type === "warning") {
+              $("rewritten").textContent = `⚠️ ${event.message}`;
+            } else if (event.type === "rewritten") {
+              $("rewritten").textContent += `${$("rewritten").textContent ? " · " : ""}🔁 Searched for: ${event.query}`;
+            } else if (event.type === "text") {
+              answer.append(event.text); // append() adds text, never HTML
+            } else if (event.type === "cite") {
+              const sup = document.createElement("sup");
+              sup.textContent = event.numbers.map((n) => `[${n}]`).join("");
+              answer.append(sup);
+            } else if (event.type === "source") {
+              const li = document.createElement("li");
+              const quote = document.createElement("blockquote");
+              li.textContent = `[${event.number}] ${event.title}`;
+              quote.textContent = `“${event.citedText}”`;
+              li.append(quote);
+              $("sources").append(li);
+            } else if (event.type === "error") {
+              throw new Error(event.message);
+            }
+          }
+        }
+      } catch (error) {
+        answer.className = "error";
+        answer.textContent = error.message;
+      }
+      $("ask-btn").disabled = false;
+      $("question").value = "";
+    });
+
+    refreshDocuments();
+  </script>
+</body>
+</html>

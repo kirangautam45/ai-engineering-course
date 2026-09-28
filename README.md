@@ -123,6 +123,14 @@ More weeks are added as the course runs. Watch the repo to get updates.
 
 The lessons use `claude-opus-5` by default. To try a different model, set `MODEL` in your `.env` file.
 
+## Using other providers
+
+The lessons use Claude, but [`lib/llm.js`](lib/llm.js) gives you one simple interface for **OpenAI, DeepSeek, Qwen and local models (Ollama)** too: chat, streaming, images and audio. See [extras/compare-providers](extras/compare-providers) to set them up and compare their answers side by side:
+
+```bash
+npm run providers -- "Explain recursion to a 10-year-old"
+```
+
 ## Scope notes
 
 Deliberately **out of scope** to fit 45 classes:

@@ -1,0 +1,119 @@
+# AI Engineering — 45-Day Course (LLMs, Prompting & RAG)
+
+**A free, class-paced course that takes you from your first LLM API call to a deployed RAG app: prompt engineering, tool calling, embeddings, vector search and evals, all in Node.js.**
+
+[![GitHub stars](https://img.shields.io/github/stars/kirangautam45/ai-engineering-course?style=social)](https://github.com/kirangautam45/ai-engineering-course/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
+![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=nodedotjs&logoColor=white)
+![Claude API](https://img.shields.io/badge/Claude-API-D97757?logo=anthropic&logoColor=white)
+
+> ⭐ **If this course helps you learn or teach AI engineering, please star the repo.** It helps other students find it.
+
+**Jump to:** [Quick start](#quick-start) · [Course structure](#course-structure) · [Full day-by-day plan](TOPICS.md) · [Contributing](#contributing)
+
+## Who this is for
+
+- Web developers who know JavaScript and want to build AI features
+- Students who have finished the [MERN Stack course](https://github.com/kirangautam45/Saptagandaki-MERN-Stack). This course reuses its Notes and Helpdesk APIs.
+- Teachers looking for a ready-made, day-by-day AI curriculum
+
+Each day is sized for a **50-minute class** (about 35 minutes of teaching and 15 minutes of live coding or Q&A), with homework covering the rest.
+
+## Prerequisites
+
+- JavaScript: functions, arrays, objects, `async`/`await`
+- Node.js and npm basics
+- Express and MongoDB help from Week 3 onward (see the MERN course)
+
+## Quick start
+
+```bash
+git clone https://github.com/kirangautam45/ai-engineering-course.git
+cd ai-engineering-course
+npm install
+cp .env.example .env    # then paste your API key into .env
+npm run day1 -- "Explain what an API is in one sentence"
+```
+
+You need an API key from the [Anthropic Console](https://console.anthropic.com/). Set a monthly spending limit there before you start. Each Week 1 exercise costs a fraction of a cent.
+
+## What students will have built by Day 45
+
+| Milestone | Day | Description |
+|---|---|---|
+| `ask` CLI | 5 | A command-line assistant with roles, error handling and stop-reason checks |
+| Prompt library | 10 | Versioned prompts with automated test cases |
+| Full-stack chat app | 15 | React + Express + MongoDB chat with streaming and saved conversations |
+| Support bot | 20 | An agent that calls the Helpdesk API with tools |
+| Semantic search | 25 | Meaning-based search over the Notes API |
+| **DocuChat (RAG)** | 30 | Upload PDFs and ask questions, with cited answers |
+| Eval suite | 40 | Automated quality scores for DocuChat |
+| **Final project** | 45 | A deployed AI app of each student's choice |
+
+## Course structure
+
+| Week | Days | Focus |
+|---|---|---|
+| 1 | 1–5 | LLM foundations: API calls, tokens, chat, streaming |
+| 2 | 6–10 | Prompt engineering: structure, examples, thinking, JSON output |
+| 3 | 11–15 | AI in web apps: Express, SSE streaming, MongoDB, React |
+| 4 | 16–20 | Tool use and agents, prompt-injection safety |
+| 5 | 21–25 | Embeddings, chunking and vector search |
+| 6 | 26–30 | Retrieval-augmented generation (RAG) with citations |
+| 7 | 31–35 | Better RAG: hybrid search, reranking, caching |
+| 8 | 36–40 | Evaluation, guardrails and monitoring |
+| 9 | 41–45 | Capstone project and deployment |
+
+Full day-by-day breakdown with objectives and homework: **[TOPICS.md](TOPICS.md)**
+
+Every fifth day is a **practice day**: no new theory, students build while the instructor helps.
+
+## Lessons in this repo
+
+| Day | Lesson | Run |
+|---|---|---|
+| 1 | [Your first LLM API call](week-01/day-01-first-call) | `npm run day1` |
+| 2 | [Tokens and cost](week-01/day-02-tokens-cost) | `npm run day2` |
+| 3 | [System prompts and multi-turn chat](week-01/day-03-roles-chat) | `npm run day3` |
+| 4 | [Streaming responses](week-01/day-04-streaming) | `npm run day4` |
+| 5 | [🛠️ Practice: a reliable `ask` CLI](week-01/day-05-practice-ask-cli) | `npm run day5` |
+
+More weeks are added as the course runs. Watch the repo to get updates.
+
+## Tooling
+
+| Tool | Notes |
+|---|---|
+| Node.js | 20.12 or newer (uses the built-in `.env` loader) |
+| [`@anthropic-ai/sdk`](https://www.npmjs.com/package/@anthropic-ai/sdk) | Official Claude SDK |
+| MongoDB Atlas | Free M0 cluster, used for chat history and Vector Search |
+| Voyage AI or Transformers.js | Embeddings (Week 5 onward) |
+| Render / Vercel | Deployment (Week 9) |
+
+The lessons use `claude-opus-5` by default. To try a different model, set `MODEL` in your `.env` file.
+
+## Scope notes
+
+Deliberately **out of scope** to fit 45 classes:
+
+- Training or fine-tuning your own models
+- The maths behind transformers (covered conceptually only)
+- Python ML libraries (PyTorch, scikit-learn)
+- Agent frameworks like LangChain. Students learn the raw API first, so frameworks are easy to pick up later.
+
+## Contributing
+
+Found a bug in an example, a typo, or have a better exercise idea? Contributions are welcome:
+
+1. Fork the repo and create a branch: `git checkout -b fix/day-03-chat`
+2. Make your change and commit it with a clear message
+3. Open a pull request describing what you changed and why
+
+## License
+
+Released under the [MIT License](LICENSE). It's free to use, adapt and teach from. Attribution is appreciated.
+
+---
+
+<p align="center">Made with ❤️ by <a href="https://github.com/kirangautam45">Kiran Gautam</a> · <a href="https://kirangtm.com.np/">kirangtm.com.np</a><br>⭐ Star the repo if you found it useful!</p>

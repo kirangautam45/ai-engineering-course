@@ -1,0 +1,21 @@
+{
+  "name": "ai-engineering-course",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Free 45-day AI engineering course: LLM APIs, prompt engineering, tool calling, embeddings and RAG with Node.js",
+  "type": "module",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "day1": "node week-01/day-01-first-call/index.js",
+    "day2": "node week-01/day-02-tokens-cost/index.js",
+    "day3": "node week-01/day-03-roles-chat/index.js",
+    "day4": "node week-01/day-04-streaming/index.js",
+    "day5": "node week-01/day-05-practice-ask-cli/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.128.0"
+  }
+}

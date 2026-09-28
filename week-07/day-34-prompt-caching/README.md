@@ -12,7 +12,7 @@ Some prompts repeat a large, unchanging part on every request: a long system pro
 ## Run it
 
 ```bash
-npm run day34
+python run.py day34
 ```
 
 The script puts **every lesson README in this course** (about 20,000 tokens) into the system prompt, with no retrieval at all ("long context"), and asks 3 questions.
@@ -35,7 +35,7 @@ Total: $0.1467 instead of $0.3000, 51% saved.
 ## The rules
 
 1. **Stable content first, changing content last.** The cache is a *prefix*: everything up to the marker must be byte-for-byte identical. The course material goes in the system prompt; the question goes in `messages`.
-2. **Mark the end of the stable part** with `cache_control: { type: "ephemeral" }`.
+2. **Mark the end of the stable part** with `"cache_control": {"type": "ephemeral"}`.
 3. **The cache lasts 5 minutes** from the last use, and each hit resets the timer. (A 1-hour option exists at a higher write price.)
 4. **There's a minimum size.** Prefixes shorter than the model's minimum (512 tokens on Claude Opus 5; more on some older models) are silently not cached. No error, just no saving.
 5. **Check it's working.** If `cache_read_input_tokens` stays at 0 on repeat requests, something before the marker is changing. A date, a random id or reordered text is enough to miss every time.
@@ -53,11 +53,11 @@ For a single handbook or a few long documents, long context with caching is ofte
 
 ## Tracking costs
 
-[`lib/costs.js`](../../lib/costs.js) turns a response's `usage` into dollars, including cache writes and reads. Update its price table from the pricing page when prices change.
+[`ailib/costs.py`](../../ailib/costs.py) turns a response's `usage` into dollars, including cache writes and reads. Update its price table from the pricing page when prices change.
 
 ## Try it
 
-- Put `new Date().toISOString()` at the start of the system prompt. What happens to the cache?
+- Put `datetime.now().isoformat()` at the start of the system prompt. What happens to the cache?
 - Move the question into the system prompt, before the course. Does caching still work?
 - Wait 6 minutes between two runs. Is the first request a cache write again?
 

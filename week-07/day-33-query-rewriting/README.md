@@ -12,9 +12,9 @@ In a chat, people don't repeat themselves. "What are the two defences?" is follo
 ## Run it
 
 ```bash
-npm run day27   # if you haven't ingested the lessons yet
-npm run day33
-npm run day33 -- --multi
+python run.py day27   # if you haven't ingested the lessons yet
+python run.py day33
+python run.py day33 --multi
 ```
 
 Try this conversation (the rewritten wording will vary):
@@ -32,7 +32,7 @@ question ──▶ rewrite with history ──▶ hybrid search ──▶ answer
             (only for follow-ups)
 ```
 
-1. **Rewrite.** If there's history, a small, fast model call (`effort: "low"`, structured output from Day 9) returns `{ query, alternatives }`. The query replaces "it", "that" and "the second one" with what they refer to.
+1. **Rewrite.** If there's history, a small, fast model call (`effort: "low"`, structured output from Day 9) returns a `Rewrite(query, alternatives)` Pydantic object. The query replaces "it", "that" and "the second one" with what they refer to.
 2. **Search** with the rewritten query, using Day 31's hybrid search.
 3. **Answer** with the conversation history plus this turn's documents, so the answer can still refer back ("as I said above...").
 4. **Save** only the plain question and answer to the history. The documents change every turn and would make the history huge.

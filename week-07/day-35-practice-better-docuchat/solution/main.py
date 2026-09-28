@@ -199,11 +199,12 @@ def ask(body: Question):
                     elif event.type == "content_block_stop" and event.index in block_citations:
                         # Show the markers after the cited text has finished, like a footnote
                         yield sse({"type": "cite", "numbers": block_citations[event.index]})
-            yield sse({"type": "done"})
 
-            # NEW: remember this turn (plain text only), keeping the history short
+            # NEW: remember this turn (plain text only), keeping the history short.
+            # Saved BEFORE "done": the browser may disconnect as soon as it sees "done".
             history.extend([{"role": "user", "content": question}, {"role": "assistant", "content": answer}])
             del history[:-MAX_HISTORY]
+            yield sse({"type": "done"})
         except Exception as error:  # noqa: BLE001
             print("Answer failed:", error)
             yield sse({"type": "error", "message": "The AI service had a problem. Please try again."})

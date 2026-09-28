@@ -6,28 +6,28 @@ Hybrid search got every answer into the top 3, but often not at #1. **Reranking*
 
 - **Two-stage retrieval**: fast and broad first, then slow and precise
 - The difference between a **bi-encoder** (embeddings) and a **cross-encoder** (reranker)
-- Running a free reranker locally with Transformers.js
+- Running a free reranker locally with `fastembed`
 - Why a perfect score on a small test set should make you suspicious, not relaxed
 
 ## Run it
 
 ```bash
-npm run day32
-npm run day32 -- "stop paying for tokens when the user leaves the page"
+python run.py day32
+python run.py day32 "stop paying for tokens when the user leaves the page"
 ```
 
-The first run downloads the reranker (23 MB).
+The first run downloads the reranker (about 80 MB).
 
 ## Results
 
 | Setup | hit@1 | hit@3 | MRR |
 |---|---|---|---|
-| Hybrid only | 10/16 | 16/16 | 0.81 |
-| Hybrid + rerank | **16/16** | **16/16** | **1.00** |
+| Hybrid only | 9/16 | 15/16 | 0.74 |
+| Hybrid + rerank | **10/16** | **16/16** | **0.79** |
 
-Reranking 20 candidates took about 200 ms on a laptop.
+Reranking 20 candidates took about 300 ms on a laptop. It fixed most exact-term queries (3/8 → 5/8 at #1) but lost one meaning query, so it isn't free accuracy.
 
-**Be careful with this result.** 16 questions is a very small test set, and a perfect score usually means the test is too easy, not that the system is perfect. Look at the single-query example above: after reranking, #2–#5 are chunks from the embeddings lessons with low scores. For RAG those extra chunks matter too, because the model reads all of them. Week 8 builds a bigger, harder test set.
+**Look at single queries, not just totals.** Try `python run.py day32 "stop paying for tokens when the user leaves the page"`. The reranker moves *this README* to #1, because the question appears in it word for word, and pushes the real answer (Day 13) from #1 down to #5. Scores above 0 are confident; the negative ones are guesses. 16 questions is also a very small test set, so a small change in the totals can be luck. Week 8 builds a bigger, harder test set.
 
 ## Bi-encoder vs cross-encoder
 
@@ -42,20 +42,20 @@ That's why you use both: the embedding model narrows millions of chunks to 20, a
 
 ## Walkthrough
 
-1. `hybridRetrieve(q, { k: 20 })` gets 20 candidates (Day 31).
-2. [`lib/rerank.js`](../../lib/rerank.js) builds 20 (question, chunk) pairs and runs the cross-encoder once over all of them.
+1. `hybrid_retrieve(q, k=20)` gets 20 candidates (Day 31).
+2. [`ailib/rerank.py`](../../ailib/rerank.py) builds 20 (question, chunk) pairs and runs the cross-encoder once over all of them.
 3. The chunks are sorted by the reranker's score. Scores aren't probabilities: only their order matters.
 
 ## Choosing a reranker
 
 | Option | Size | Languages | Cost |
 |---|---|---|---|
-| `Xenova/ms-marco-MiniLM-L-6-v2` (default) | 23 MB | English | Free, local |
-| `onnx-community/bge-reranker-v2-m3-ONNX` | 576 MB | 100+ including Nepali | Free, local |
+| `Xenova/ms-marco-MiniLM-L-6-v2` (default) | 80 MB | English | Free, local |
+| `jinaai/jina-reranker-v2-base-multilingual` | 1.1 GB | 100+ including Nepali | Free, local |
 | A hosted reranker (e.g. Voyage AI) | — | Many | Pay per use |
 | Ask Claude to score relevance | — | Many | An extra API call per question |
 
-To switch, change `RERANK_MODEL` in `lib/rerank.js`. The English-only default scores a Nepali chunk as irrelevant even when it's the right answer, so use the multilingual one for Nepali documents.
+To switch, set `RERANK_MODEL` in your `.env` file. The English-only default scores a Nepali chunk as irrelevant even when it's the right answer, so use the multilingual one for Nepali documents.
 
 ## Try it
 

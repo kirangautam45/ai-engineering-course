@@ -14,34 +14,34 @@ Vector search understands meaning, but it's surprisingly bad at **exact terms**:
 Same database as Week 6. Ingest the lessons first; the keyword index is created automatically on the first run:
 
 ```bash
-npm run day27
+python run.py day27
 ```
 
 ## Run it
 
 ```bash
-npm run day31
-npm run day31 -- "citations_delta"
-npm run day31 -- "splitting long documents into smaller pieces"
+python run.py day31
+python run.py day31 "citations_delta"
+python run.py day31 "splitting long documents into smaller pieces"
 ```
 
-With no query, it scores all three methods on the 16 [test queries](test-queries.js): 8 **exact** (like `numCandidates`, `unpdf`, `HISTORY_LIMIT`) and 8 **meaning** (phrased differently from the lessons).
+With no query, it scores all three methods on the 16 [test queries](test_queries.py): 8 **exact** (like `numCandidates`, `pypdf`, `HISTORY_LIMIT`) and 8 **meaning** (phrased differently from the lessons).
 
 ## Results
 
-Measured on this course's Week 1–6 lessons when this lesson was written:
+Measured on this course's lesson READMEs (`python run.py day27`) when this lesson was written:
 
 | Method | hit@1 | hit@3 | MRR | Exact terms (hit@1) | Meaning (hit@1) |
 |---|---|---|---|---|---|
-| Vector search | 8/16 | 13/16 | 0.65 | 2/8 | 6/8 |
-| Keyword search | **12/16** | 15/16 | **0.85** | **7/8** | 5/8 |
-| Hybrid (RRF) | 10/16 | **16/16** | 0.81 | 4/8 | **6/8** |
+| Vector search | 5/16 | 9/16 | 0.50 | 1/8 | 4/8 |
+| Keyword search | 6/16 | **15/16** | 0.65 | **3/8** | 3/8 |
+| Hybrid (RRF) | **9/16** | **15/16** | **0.74** | **3/8** | **6/8** |
 
 What this shows:
 
-- **Vector search failed most exact-term queries.** Searching `citations_delta` returns the Day 29 citations lesson (similar *meaning*), not Day 30, the only lesson that contains the word.
-- **Keyword search is strong here**, because this course is full of code names. On everyday documents with fewer unique terms, it does worse.
-- **Hybrid is the only method that gets every answer into the top 3**, but it's not the best at putting it first. Tomorrow's reranking fixes that.
+- **Vector search failed most exact-term queries.** Searching `citations_delta` returns the Day 29 citations lesson (similar *meaning*), not Day 30, where the word is used.
+- **Keyword search gets almost every answer into the top 3**, but often not at #1: other lessons (including this one!) mention the same words. `numCandidates` appears in Day 24 *and* in this README.
+- **Hybrid is the best overall**: it combines keyword search's top-3 coverage with vector search's feel for meaning. It still doesn't always put the right lesson first. Tomorrow's reranking helps with that.
 
 ## Reciprocal rank fusion
 
@@ -51,7 +51,7 @@ The two searches give scores on completely different scales (cosine similarity 0
 score(chunk) = Σ  1 / (60 + rank in each list)
 ```
 
-A chunk that's #1 in both lists scores 1/61 + 1/61. A chunk that's #1 in one list and missing from the other scores 1/61. Chunks both methods agree on rise to the top. It's in [`lib/vector-store.js`](../../lib/vector-store.js) as `reciprocalRankFusion()`, and it's 12 lines.
+A chunk that's #1 in both lists scores 1/61 + 1/61. A chunk that's #1 in one list and missing from the other scores 1/61. Chunks both methods agree on rise to the top. It's in [`ailib/vector_store.py`](../../ailib/vector_store.py) as `reciprocal_rank_fusion()`, and it's about 10 lines.
 
 ## The metrics
 
@@ -63,7 +63,7 @@ A chunk that's #1 in both lists scores 1/61 + 1/61. A chunk that's #1 in one lis
 
 ## Try it
 
-- Add 4 queries of your own to `test-queries.js`: 2 exact, 2 meaning. Do the results change?
+- Add 4 queries of your own to `test_queries.py`: 2 exact, 2 meaning. Do the results change?
 - Change the `60` in RRF to `1` and to `1000`. What happens?
 - Search in Nepali. Which method still works, and why?
 

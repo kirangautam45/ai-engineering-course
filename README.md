@@ -10,7 +10,7 @@
 
 > 🐍 **This is the Python version** (branch [`python`](https://github.com/kirangautam45/ai-engineering-course/tree/python)). The JavaScript/Node.js version is on [`main`](https://github.com/kirangautam45/ai-engineering-course).
 >
-> 🚧 **Conversion in progress:** Weeks 1–4 are in Python. Weeks 5–9 still contain the JavaScript code and are being converted.
+> 🚧 **Conversion in progress:** Weeks 1–7 are in Python. Weeks 8–9 still contain the JavaScript code and are being converted.
 
 > ⭐ **If this course helps you learn or teach AI engineering, please star the repo.** It helps other students find it.
 

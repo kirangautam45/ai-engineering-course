@@ -13,13 +13,14 @@ from ailib.mongo import mongo
 from ailib.vector_store import ensure_index, list_documents, remove_document, upsert_document
 
 folders = [Path(f) for f in sys.argv[1:]]
+SKIP = {".venv", "node_modules"}  # installed packages have their own README files: not our documents
 
 # 1. Find the files. The "source" name is the path relative to where you run the command.
 if folders:
-    files = sorted(f for folder in folders for f in folder.rglob("*")
-                   if f.suffix.lower() in SUPPORTED_TYPES and ".venv" not in f.parts and "node_modules" not in f.parts)
+    files = sorted(f for folder in folders for f in folder.rglob("*") if f.suffix.lower() in SUPPORTED_TYPES)
 else:
     files = sorted(Path(".").glob("week-*/**/*.md"))
+files = [f for f in files if not SKIP & set(f.parts)]
 print(f"Found {len(files)} files.\n")
 
 ensure_index()

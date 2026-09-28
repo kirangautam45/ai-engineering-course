@@ -8,6 +8,8 @@
 ![Node.js](https://img.shields.io/badge/Node.js-22%2B-339933?logo=nodedotjs&logoColor=white)
 ![Claude API](https://img.shields.io/badge/Claude-API-D97757?logo=anthropic&logoColor=white)
 
+> 🐍 **Prefer Python?** The whole course, with the same lessons, projects and pace, is also available in Python (FastAPI, PyMongo) on the [`python` branch](https://github.com/kirangautam45/ai-engineering-course/tree/python).
+
 > ⭐ **If this course helps you learn or teach AI engineering, please star the repo.** It helps other students find it.
 
 **Jump to:** [Quick start](#quick-start) · [Course structure](#course-structure) · [Full day-by-day plan](TOPICS.md) · [Contributing](#contributing)
@@ -17,6 +19,7 @@
 - Web developers who know JavaScript and want to build AI features
 - Students who have finished the [MERN Stack course](https://github.com/kirangautam45/Saptagandaki-MERN-Stack). This course reuses its Notes and Helpdesk APIs.
 - Teachers looking for a ready-made, day-by-day AI curriculum
+- Python developers: use the [`python` branch](https://github.com/kirangautam45/ai-engineering-course/tree/python) instead
 
 Each day is sized for a **50-minute class** (about 35 minutes of teaching and 15 minutes of live coding or Q&A), with homework covering the rest.
 

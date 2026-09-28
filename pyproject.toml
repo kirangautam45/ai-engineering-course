@@ -18,6 +18,9 @@ dependencies = [
     "numpy>=1.26",
     # Other providers (OpenAI, DeepSeek, Qwen, Ollama) and hosted embeddings
     "openai>=2.0",
+    # Week 6 onward: reading PDFs, and file uploads in FastAPI
+    "pypdf>=5.0",
+    "python-multipart>=0.0.9",
 ]
 
 [build-system]

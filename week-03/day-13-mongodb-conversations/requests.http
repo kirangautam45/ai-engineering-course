@@ -1,0 +1,20 @@
+### 1. Start a conversation — copy the _id from the response
+POST http://localhost:3000/api/conversations
+
+### 2. Send a message (paste the id). The reply streams back as SSE events.
+POST http://localhost:3000/api/conversations/PASTE_ID_HERE/messages
+Content-Type: application/json
+
+{ "content": "My name is Sita and I'm learning JavaScript." }
+
+### 3. Send another — the server remembers the history
+POST http://localhost:3000/api/conversations/PASTE_ID_HERE/messages
+Content-Type: application/json
+
+{ "content": "What's my name, and what am I learning?" }
+
+### 4. See the saved conversation
+GET http://localhost:3000/api/conversations/PASTE_ID_HERE
+
+### 5. List all conversations
+GET http://localhost:3000/api/conversations

@@ -106,41 +106,46 @@
 
 ## Week 3 — AI in Your Web Apps (Days 11–15)
 
-### Day 11 — An Express chat API
+### Day 11 — An Express chat API ✅
 **Objective:** Expose an LLM through your own backend.
 **Teach:**
 - Never call the LLM API from the browser: your key would be public. The backend is the gatekeeper.
 - `POST /api/chat` receives `{ messages }` and returns the reply. Reuse `lib/ask.js`.
 - Validate input size so nobody sends you a 1-million-token request.
 **Homework:** Add a `POST /api/summarize` endpoint.
+**Code:** [week-03/day-11-express-chat-api](week-03/day-11-express-chat-api)
 
-### Day 12 — Streaming to the browser (SSE)
+### Day 12 — Streaming to the browser (SSE) ✅
 **Objective:** Stream tokens from Express to a web page.
 **Teach:**
 - Server-Sent Events: `Content-Type: text/event-stream` and `res.write()`.
 - Forward each `text_delta` from the SDK stream to the client.
 - Handle client disconnects by aborting the stream so you stop paying for tokens nobody reads.
 **Homework:** Show a typing indicator until the first token arrives.
+**Code:** [week-03/day-12-sse-streaming](week-03/day-12-sse-streaming)
 
-### Day 13 — Saving conversations in MongoDB
+### Day 13 — Saving conversations in MongoDB ✅
 **Objective:** Persist chat history per user.
 **Teach:**
 - A `Conversation` model with a `messages` array.
 - Load history, append the new message, call the model, then save the reply.
 - Trimming history: keep the last N messages, or summarize old ones to control cost.
 **Homework:** Add `GET /api/conversations` to list past chats with auto-generated titles.
+**Code:** [week-03/day-13-mongodb-conversations](week-03/day-13-mongodb-conversations)
 
-### Day 14 — A React chat UI
+### Day 14 — A React chat UI ✅
 **Objective:** Build a chat interface that renders streamed Markdown.
 **Teach:**
 - A message list, an input box and auto-scroll.
 - Read the SSE stream with `fetch` and a `ReadableStream` reader.
 - Render Markdown and code blocks safely.
 **Homework:** Add a "Stop generating" button.
+**Code:** [week-03/day-14-react-chat-ui](week-03/day-14-react-chat-ui)
 
-### Day 15 — 🛠️ Practice: full-stack chat app
+### Day 15 — 🛠️ Practice: full-stack chat app ✅
 **Objective:** Ship a working ChatGPT-style app.
 **Build:** React + Express + MongoDB chat with streaming, saved conversations and a system-prompt picker (tutor, translator, code reviewer).
+**Code:** [week-03/day-15-practice-chat-app](week-03/day-15-practice-chat-app)
 
 ---
 

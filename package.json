@@ -17,11 +17,16 @@
     "day7": "node week-02/day-07-examples-xml/index.js",
     "day8": "node week-02/day-08-thinking-effort/index.js",
     "day9": "node week-02/day-09-structured-output/index.js",
-    "day10": "node week-02/day-10-practice-prompt-tests/index.js"
+    "day10": "node week-02/day-10-practice-prompt-tests/index.js",
+    "day11": "node week-03/day-11-express-chat-api/server.js",
+    "day12": "node week-03/day-12-sse-streaming/server.js",
+    "day13": "node week-03/day-13-mongodb-conversations/server.js"
   },
   "license": "MIT",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.128.0",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.2",
     "zod": "^4.6.5"
   }
 }

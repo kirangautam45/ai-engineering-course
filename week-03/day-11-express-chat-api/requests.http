@@ -1,0 +1,30 @@
+### Health check
+GET http://localhost:3000/api/health
+
+### Ask one question
+POST http://localhost:3000/api/chat
+Content-Type: application/json
+
+{
+  "messages": [{ "role": "user", "content": "What is an API, in one sentence?" }]
+}
+
+### Continue a conversation (the client sends the whole history)
+POST http://localhost:3000/api/chat
+Content-Type: application/json
+
+{
+  "messages": [
+    { "role": "user", "content": "My name is Sita." },
+    { "role": "assistant", "content": "Nice to meet you, Sita!" },
+    { "role": "user", "content": "What is my name?" }
+  ]
+}
+
+### Should fail with 400: last message is from the assistant
+POST http://localhost:3000/api/chat
+Content-Type: application/json
+
+{
+  "messages": [{ "role": "assistant", "content": "Hello" }]
+}

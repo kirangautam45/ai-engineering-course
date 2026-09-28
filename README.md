@@ -83,6 +83,11 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 8 | [Thinking and effort](week-02/day-08-thinking-effort) | `npm run day8` |
 | 9 | [Structured output (JSON)](week-02/day-09-structured-output) | `npm run day9` |
 | 10 | [🛠️ Practice: prompt library with tests](week-02/day-10-practice-prompt-tests) | `npm run day10` |
+| 11 | [An Express chat API](week-03/day-11-express-chat-api) | `npm run day11` |
+| 12 | [Streaming to the browser (SSE)](week-03/day-12-sse-streaming) | `npm run day12` |
+| 13 | [Saving conversations in MongoDB](week-03/day-13-mongodb-conversations) | `npm run day13` |
+| 14 | [A React chat UI](week-03/day-14-react-chat-ui) | `npm run dev` in its folder |
+| 15 | [🛠️ Practice: full-stack chat app](week-03/day-15-practice-chat-app) | Project spec |
 
 More weeks are added as the course runs. Watch the repo to get updates.
 

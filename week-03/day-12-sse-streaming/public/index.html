@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Streaming Chat</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 16px; }
+    #log { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+    .msg { padding: 10px 14px; border-radius: 12px; white-space: pre-wrap; line-height: 1.5; }
+    .user { background: #dbeafe; align-self: flex-end; }
+    .assistant { background: #f3f4f6; }
+    .error { background: #fee2e2; }
+    form { display: flex; gap: 8px; }
+    input { flex: 1; padding: 10px; font-size: 16px; }
+    button { padding: 10px 16px; font-size: 16px; }
+    #stats { color: #6b7280; font-size: 13px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Streaming Chat</h1>
+  <div id="log"></div>
+  <form id="form">
+    <input id="input" placeholder="Ask something..." autocomplete="off" required />
+    <button id="send">Send</button>
+  </form>
+  <div id="stats"></div>
+
+  <script type="module">
+    const history = [];
+    const log = document.querySelector("#log");
+    const form = document.querySelector("#form");
+    const input = document.querySelector("#input");
+    const send = document.querySelector("#send");
+    const stats = document.querySelector("#stats");
+
+    function addBubble(role, text) {
+      const div = document.createElement("div");
+      div.className = `msg ${role}`;
+      div.textContent = text;
+      log.append(div);
+      return div;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const question = input.value.trim();
+      input.value = "";
+      send.disabled = true;
+
+      history.push({ role: "user", content: question });
+      addBubble("user", question);
+      const bubble = addBubble("assistant", "…");
+      let answer = "";
+      const started = performance.now();
+
+      try {
+        const res = await fetch("/api/chat/stream", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: history }),
+        });
+        if (!res.ok) throw new Error((await res.json()).error);
+
+        // Read the response body piece by piece as it arrives
+        const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
+        let buffer = "";
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buffer += value;
+
+          // Events are separated by a blank line. The last piece may be incomplete, so keep it.
+          const events = buffer.split("\n\n");
+          buffer = events.pop();
+
+          for (const raw of events) {
+            if (!raw.startsWith("data: ")) continue;
+            const event = JSON.parse(raw.slice(6));
+            if (event.type === "text") {
+              if (!answer) stats.textContent = `First text after ${Math.round(performance.now() - started)} ms`;
+              answer += event.text;
+              bubble.textContent = answer;
+            } else if (event.type === "done") {
+              stats.textContent += ` · ${event.usage.output_tokens} tokens`;
+            } else if (event.type === "error") {
+              throw new Error(event.message);
+            }
+          }
+        }
+        history.push({ role: "assistant", content: answer });
+      } catch (error) {
+        bubble.className = "msg error";
+        bubble.textContent = error.message;
+        history.pop(); // forget the question that failed so the user can retry
+      }
+      send.disabled = false;
+      input.focus();
+    });
+  </script>
+</body>
+</html>

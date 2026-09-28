@@ -31,12 +31,12 @@ None of these searches share a keyword with the note they should find.
 Use the same Atlas (or `atlas-local` Docker) connection as Day 24. Start the reference server, then load the 8 sample notes in [`sample-notes.json`](sample-notes.json) (including one in Nepali) from a second terminal:
 
 ```bash
-npm run day25
-npm run day25:samples
+python run.py day25
+python run.py day25:samples
 curl "localhost:3000/api/notes/search?q=when%20is%20my%20test"
 ```
 
-When you build your own version, point `npm run day25:samples` at it by setting `NOTES_URL` if it runs on another port.
+When you build your own version, point `python run.py day25:samples` at it by setting `NOTES_URL` if it runs on another port.
 
 ## Checklist
 
@@ -52,7 +52,7 @@ Atlas updates vector indexes **in the background**, usually within a second or t
 
 ## Reference solution
 
-[`solution/server.js`](solution/server.js) is a complete version. It uses the embedding helpers from `lib/` and the database helpers from [`lib/mongo.js`](../../lib/mongo.js). Try it yourself first.
+[`solution/main.py`](solution/main.py) is a complete FastAPI version. It uses the embedding helpers from `ailib/` and the database helpers from [`ailib/mongo.py`](../../ailib/mongo.py). Try it yourself first.
 
 ## Stretch goals
 

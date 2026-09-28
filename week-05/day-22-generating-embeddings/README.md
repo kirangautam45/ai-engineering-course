@@ -13,10 +13,10 @@ Yesterday you embedded a few sentences. Today you build a real (small) search in
 ## Run it
 
 ```bash
-npm run day22 -- build
-npm run day22 -- search "how do I stop a stream when the user leaves?"
-npm run day22 -- search "keeping my API key secret"
-npm run day22 -- search "नेपालीमा अनुवाद"
+python run.py day22 build
+python run.py day22 search "how do I stop a stream when the user leaves?"
+python run.py day22 search "keeping my API key secret"
+python run.py day22 search "नेपालीमा अनुवाद"
 ```
 
 `build` writes `index.json` (ignored by git). It's plain JSON: open it and look at what a search index really is.
@@ -43,13 +43,13 @@ This model reads at most **128 tokens** (about 80–100 words) per text. Everyth
 | Max text length | 128 tokens | Thousands of tokens |
 | Privacy | Text never leaves your computer | Text is sent to the provider |
 
-Claude doesn't make embeddings itself. For production apps, Anthropic recommends [Voyage AI](https://docs.voyageai.com/). Hosted models often take an `input_type` of `"document"` or `"query"`, because questions and answers are phrased differently. To switch, you would only change `embed()` in [`lib/embeddings.js`](../../lib/embeddings.js), then rebuild the index.
+Claude doesn't make embeddings itself. For production apps, Anthropic recommends [Voyage AI](https://docs.voyageai.com/). Hosted models often take an `input_type` of `"document"` or `"query"`, because questions and answers are phrased differently. To switch, you would only change `embed()` in [`ailib/embeddings.py`](../../ailib/embeddings.py), then rebuild the index. (It already supports OpenAI and Qwen: see Day 43.)
 
 ## Try it
 
 - Search in Nepali or Romanized Nepali. Which lessons come up?
 - Time `build` with `BATCH_SIZE = 1` and with `BATCH_SIZE = 16`. What's the difference?
-- Change `EMBEDDING_MODEL` in `lib/embeddings.js` and run `search` without rebuilding. What happens?
+- Set `EMBEDDING_PROVIDER=openai` in `.env` (with an OpenAI key) and run `search` without rebuilding. What happens?
 
 ## Homework
 

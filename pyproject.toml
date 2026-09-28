@@ -13,6 +13,11 @@ dependencies = [
     "pymongo>=4.13",
     # Week 4 onward: calling other web APIs from tools
     "httpx>=0.27",
+    # Week 5 onward: embeddings and reranking that run on your computer (no API key)
+    "fastembed>=0.7",
+    "numpy>=1.26",
+    # Other providers (OpenAI, DeepSeek, Qwen, Ollama) and hosted embeddings
+    "openai>=2.0",
 ]
 
 [build-system]

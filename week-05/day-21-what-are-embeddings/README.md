@@ -6,16 +6,16 @@ Keyword search only finds exact words: search "vehicle" and you'll miss "bus". T
 
 - An **embedding** is a list of numbers that represents the meaning of a piece of text
 - Texts with similar meanings get vectors that point in similar directions
-- **Cosine similarity**: how to measure that, in 10 lines of JavaScript
+- **Cosine similarity**: how to measure that, in a few lines of Python
 - Why embeddings work across languages: "I forgot my password" and "पासवर्ड बिर्सिएँ" land close together
 
 ## Run it
 
 ```bash
-npm run day21
+python run.py day21
 ```
 
-The first run downloads a free embedding model (about 120 MB). After that it works offline and costs nothing: this week's lessons don't need an API key at all.
+The first run downloads a free embedding model (about 220 MB, saved in `.cache/fastembed`). After that it works offline and costs nothing: this week's lessons don't need an API key at all.
 
 ## The idea in one picture
 
@@ -32,18 +32,21 @@ Imagine describing words with 3 scores: *is it an animal? is it food? is it a ve
 
 ## Cosine similarity
 
-In [`lib/embeddings.js`](../../lib/embeddings.js):
+In [`ailib/embeddings.py`](../../ailib/embeddings.py), using NumPy:
 
-```js
-export function cosineSimilarity(a, b) {
-  let dot = 0, lengthA = 0, lengthB = 0;
-  for (let i = 0; i < a.length; i++) {
-    dot += a[i] * b[i];
-    lengthA += a[i] * a[i];
-    lengthB += b[i] * b[i];
-  }
-  return dot / (Math.sqrt(lengthA) * Math.sqrt(lengthB));
-}
+```python
+def cosine_similarity(a, b) -> float:
+    a, b = np.asarray(a), np.asarray(b)
+    return float(a @ b / (np.linalg.norm(a) * np.linalg.norm(b)))
+```
+
+`a @ b` is the **dot product**: multiply the numbers pair by pair and add them up. Dividing by both lengths (`np.linalg.norm`) means only the vectors' **direction** counts, not how long they are. Written out by hand, it's the same as:
+
+```python
+dot = sum(x * y for x, y in zip(a, b))
+length_a = sum(x * x for x in a) ** 0.5
+length_b = sum(y * y for y in b) ** 0.5
+similarity = dot / (length_a * length_b)
 ```
 
 The result goes from -1 (opposite meanings) to 1 (same meaning). It only cares about **direction**, not length.

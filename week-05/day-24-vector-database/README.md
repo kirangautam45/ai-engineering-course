@@ -1,6 +1,6 @@
 # Day 24: Vector Databases
 
-Looping over every vector in JavaScript is fine for 100 chunks. For a million it's far too slow. A **vector database** stores embeddings and finds the nearest ones quickly. You already know MongoDB, and Atlas has vector search built in.
+Looping over every vector in Python is fine for 100 chunks. For a million it's far too slow. A **vector database** stores embeddings and finds the nearest ones quickly. You already know MongoDB, and Atlas has vector search built in.
 
 ## What you will learn
 
@@ -26,34 +26,35 @@ Vector search needs **MongoDB Atlas**, not a plain local MongoDB. Use either:
 ## Run it
 
 ```bash
-npm run day24:setup
-npm run day24 -- "how do I stream answers to the browser?"
-npm run day24 -- "how do I stream answers to the browser?" --week week-01
+python run.py day24 setup
+python run.py day24 "how do I stream answers to the browser?"
+python run.py day24 "how do I stream answers to the browser?" --week week-01
 ```
 
 `setup` chunks and embeds every lesson, saves the chunks to the `lesson_chunks` collection and creates the index. Run it again whenever lessons change.
 
 ## Walkthrough
 
-**[`setup.js`](setup.js)**
+**[`main.py`](main.py): `setup`**
 
-1. Each chunk is saved as a normal document: `{ file, title, week, chunkIndex, text, embedding, embeddingModel }`. The metadata is what lets you show sources and filter results.
-2. `createSearchIndex()` defines the index:
+1. Each chunk is saved as a normal document: `{file, title, week, chunkIndex, text, embedding, embeddingModel}`. The metadata is what lets you show sources and filter results.
+2. `create_search_index()` defines the index:
 
-   ```js
-   fields: [
-     { type: "vector", path: "embedding", numDimensions: 384, similarity: "cosine" },
-     { type: "filter", path: "week" },
+   ```python
+   "fields": [
+       {"type": "vector", "path": "embedding", "numDimensions": 384, "similarity": "cosine"},
+       {"type": "filter", "path": "week"},
    ]
    ```
 
    `numDimensions` must match the embedding model exactly. `week` is declared as a filter field so searches can narrow by it.
-3. The index is built in the background, so `waitForSearchIndex()` in [`lib/mongo.js`](../../lib/mongo.js) waits until it's `queryable`.
+3. The index is built in the background, so `wait_for_search_index()` in [`ailib/mongo.py`](../../ailib/mongo.py) waits until it's `queryable`.
 
-**[`search.js`](search.js)**
+**[`main.py`](main.py): search**
 
-```js
-{ $vectorSearch: { index, path: "embedding", queryVector, numCandidates: 100, limit: 5, filter: { week } } }
+```python
+{"$vectorSearch": {"index": INDEX_NAME, "path": "embedding", "queryVector": query_vector,
+                   "numCandidates": 100, "limit": 5, "filter": {"week": week}}}
 ```
 
 - `numCandidates`: how many nearby vectors the index looks at. More is more accurate but slower. A common rule is 10–20 × `limit`.

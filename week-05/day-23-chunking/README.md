@@ -13,22 +13,22 @@ Yesterday's search missed anything that wasn't near the start of a lesson, becau
 ## Run it
 
 ```bash
-npm run day23
+python run.py day23
 ```
 
-It chunks every Week 1–4 lesson README in three ways, embeds the chunks and asks 12 [test questions](test-queries.js) whose answers are buried inside one lesson. For each strategy it reports how often the right lesson was in the top 3.
+It chunks every Week 1–4 lesson README in three ways, embeds the chunks and asks 12 [test questions](test_queries.py) whose answers are buried inside one lesson. For each strategy it reports how often the right lesson was in the top 3.
 
 Results when this lesson was written (yours may differ as the READMEs change):
 
 | Strategy | Chunks | Right lesson in top 3 |
 |---|---|---|
-| Whole document | 20 | 8 / 12 |
-| Fixed size, 80 words, 20 overlap | 125 | **11 / 12** |
-| By heading, then size | 150 | 10 / 12 |
+| Whole document | 20 | 10 / 12 |
+| Fixed size, 80 words, 20 overlap | 134 | **12 / 12** |
+| By heading, then size | 160 | 10 / 12 |
 
 ## The two strategies
 
-Both live in [`lib/chunking.js`](../../lib/chunking.js) so later lessons can reuse them.
+Both live in [`ailib/chunking.py`](../../ailib/chunking.py) so later lessons can reuse them.
 
 **Fixed size with overlap.** Cut every 80 words. The last 20 words of each chunk are repeated at the start of the next one, so a sentence that's cut in half still appears whole somewhere.
 
@@ -61,8 +61,8 @@ Common starting points are 100–500 words for hosted models with long limits. W
 
 - Change `size` to 40 and 120. What happens to the score? Why does 120 get worse with this model?
 - Set `overlap` to 0. Does it matter?
-- Write three test questions of your own for Week 4 lessons and add them to `test-queries.js`.
+- Write three test questions of your own for Week 4 lessons and add them to `test_queries.py`.
 
 ## Homework
 
-Chunk one long PDF (a college syllabus or a government notice) both ways, and write 5 test questions for it. Which strategy wins for *your* document? Hint: `npm install pdf-parse` can extract the text.
+Chunk one long PDF (a college syllabus or a government notice) both ways, and write 5 test questions for it. Which strategy wins for *your* document? Hint: `pip install pypdf` can extract the text.

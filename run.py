@@ -12,7 +12,9 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 
 # Shortcuts that aren't "dayN"
-ALIASES = {}
+ALIASES = {
+    "day25:samples": ROOT / "week-05/day-25-practice-semantic-notes/load_samples.py",
+}
 
 
 def find_script(day: int) -> Path | None:

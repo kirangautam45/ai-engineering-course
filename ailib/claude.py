@@ -2,13 +2,10 @@
 
 import os
 import sys
-from pathlib import Path
 
 import anthropic
-from dotenv import load_dotenv
 
-# Read the .env file in the folder you run the command from (the repo root)
-load_dotenv(Path.cwd() / ".env")
+import ailib.env  # noqa: F401 — loads .env
 
 MODEL = os.getenv("MODEL", "claude-opus-5")
 

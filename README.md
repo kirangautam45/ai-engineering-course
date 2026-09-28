@@ -103,7 +103,7 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 21 | [What are embeddings?](week-05/day-21-what-are-embeddings) | `python run.py day21` |
 | 22 | [Generating and storing embeddings](week-05/day-22-generating-embeddings) | `python run.py day22 build` |
 | 23 | [Chunking](week-05/day-23-chunking) | `python run.py day23` |
-| 24 | [Vector databases (Atlas Vector Search)](week-05/day-24-vector-database) | `python run.py day24:setup` |
+| 24 | [Vector databases (Atlas Vector Search)](week-05/day-24-vector-database) | `python run.py day24 setup` |
 | 25 | [🛠️ Practice: semantic search for notes](week-05/day-25-practice-semantic-notes) | `python run.py day25` |
 | 26 | [How RAG works](week-06/day-26-how-rag-works) | `python run.py day26` |
 | 27 | [The ingestion pipeline](week-06/day-27-ingestion) | `python run.py day27` |

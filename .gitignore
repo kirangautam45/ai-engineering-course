@@ -9,3 +9,4 @@ week-08/day-40-practice-eval-suite/reports/
 .venv/
 __pycache__/
 *.egg-info/
+.cache/

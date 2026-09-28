@@ -20,7 +20,12 @@
     "day10": "node week-02/day-10-practice-prompt-tests/index.js",
     "day11": "node week-03/day-11-express-chat-api/server.js",
     "day12": "node week-03/day-12-sse-streaming/server.js",
-    "day13": "node week-03/day-13-mongodb-conversations/server.js"
+    "day13": "node week-03/day-13-mongodb-conversations/server.js",
+    "day16": "node week-04/day-16-first-tool/index.js",
+    "day17": "node week-04/day-17-multiple-tools/index.js",
+    "day18": "node week-04/day-18-tool-runner/index.js",
+    "day19": "node week-04/day-19-prompt-injection/index.js",
+    "day20": "node week-04/day-20-practice-support-bot/solution/bot.js"
   },
   "license": "MIT",
   "dependencies": {

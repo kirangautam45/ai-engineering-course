@@ -151,41 +151,46 @@
 
 ## Week 4 — Tool Use and Agents (Days 16–20)
 
-### Day 16 — What is tool calling?
+### Day 16 — What is tool calling? ✅
 **Objective:** Let the model call a JavaScript function.
 **Teach:**
 - The model can't browse, calculate or read your database on its own. Tools give it hands.
 - Define a tool with a name, description and JSON schema. When `stop_reason` is `"tool_use"`, run the function and send back a `tool_result`.
 - Write the loop by hand once so students see exactly what happens.
 **Homework:** A calculator tool, then ask "What is 18% VAT on NPR 45,999?"
+**Code:** [week-04/day-16-first-tool](week-04/day-16-first-tool)
 
-### Day 17 — Multiple tools and errors
+### Day 17 — Multiple tools and errors ✅
 **Objective:** Handle several tools, parallel calls and failures.
 **Teach:**
 - The model may call several tools in one turn. Run them all and return every result in one message.
 - Return errors as `tool_result` with `is_error: true` so the model can recover.
 - Write good tool descriptions: they are prompts too.
 **Homework:** Add `get_weather` (real API) and `convert_currency` tools.
+**Code:** [week-04/day-17-multiple-tools](week-04/day-17-multiple-tools)
 
-### Day 18 — The tool runner
+### Day 18 — The tool runner ✅
 **Objective:** Use the SDK's tool runner instead of a hand-written loop.
 **Teach:**
 - `betaZodTool` + `client.beta.messages.toolRunner()`: define the tools and the SDK runs the loop.
 - Limit the number of iterations so a confused model can't loop forever.
 - When to build an "agent" and when a single call is enough.
 **Homework:** Rewrite Day 17 with the tool runner.
+**Code:** [week-04/day-18-tool-runner](week-04/day-18-tool-runner)
 
-### Day 19 — Safety: prompt injection and permissions
+### Day 19 — Safety: prompt injection and permissions ✅
 **Objective:** Recognize and defend against prompt injection.
 **Teach:**
 - Live demo: a document containing "ignore your instructions and…".
 - Treat tool results and documents as data, not instructions.
 - Least privilege: read-only tools by default and human confirmation for anything destructive.
 **Homework:** Try to break a classmate's Day 17 bot. Write up what worked and how to fix it.
+**Code:** [week-04/day-19-prompt-injection](week-04/day-19-prompt-injection)
 
-### Day 20 — 🛠️ Practice: support bot
+### Day 20 — 🛠️ Practice: support bot ✅
 **Objective:** Connect an AI assistant to a real API.
 **Build:** A support bot with tools that call the Helpdesk API from the MERN course: `list_tickets`, `get_ticket`, `create_ticket`. Creating a ticket requires the user to confirm.
+**Code:** [week-04/day-20-practice-support-bot](week-04/day-20-practice-support-bot)
 
 ---
 

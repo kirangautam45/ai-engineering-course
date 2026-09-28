@@ -88,6 +88,11 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 13 | [Saving conversations in MongoDB](week-03/day-13-mongodb-conversations) | `npm run day13` |
 | 14 | [A React chat UI](week-03/day-14-react-chat-ui) | `npm run dev` in its folder |
 | 15 | [🛠️ Practice: full-stack chat app](week-03/day-15-practice-chat-app) | Project spec |
+| 16 | [Your first tool: a calculator](week-04/day-16-first-tool) | `npm run day16` |
+| 17 | [Multiple tools, parallel calls and errors](week-04/day-17-multiple-tools) | `npm run day17` |
+| 18 | [The tool runner](week-04/day-18-tool-runner) | `npm run day18` |
+| 19 | [Prompt injection](week-04/day-19-prompt-injection) | `npm run day19` |
+| 20 | [🛠️ Practice: support bot for the Helpdesk API](week-04/day-20-practice-support-bot) | `npm run day20` |
 
 More weeks are added as the course runs. Watch the repo to get updates.
 

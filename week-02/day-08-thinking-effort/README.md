@@ -12,7 +12,7 @@ Some questions need the model to reason before it answers. Today you learn how t
 ## Run it
 
 ```bash
-npm run day8
+python run.py day8
 ```
 
 The script gives a seating puzzle to the model twice, at `low` and `high` effort, and prints the thinking summary, the answer, the time and the tokens for each.

@@ -12,10 +12,10 @@ Instructions tell the model what to do. **Examples show it.** Today you use both
 ## Run it
 
 ```bash
-npm run day7
+python run.py day7
 ```
 
-Four messy emails from [`emails.js`](emails.js) become tickets in the same format.
+Four messy emails from [`emails.py`](emails.py) become tickets in the same format.
 
 ## Walkthrough
 

@@ -1,13 +1,21 @@
-// Day 7 — Few-shot examples and XML tags
-// Run: npm run day7
-// Turns messy customer emails into clean, consistent support tickets.
-import { client, MODEL, textOf } from "../../lib/claude.js";
-import { emails } from "./emails.js";
+"""Day 7 — Few-shot examples and XML tags
 
-// The system prompt holds the instructions AND the examples. XML tags keep each part separate.
-// The examples are deliberately different from each other so the model learns the pattern,
-// not the exact wording.
-const SYSTEM = `You turn customer emails for an internet provider into support tickets.
+Run: python run.py day7
+Turns messy customer emails into clean, consistent support tickets.
+"""
+
+import sys
+from pathlib import Path
+
+from ailib.claude import MODEL, client, text_of
+
+sys.path.insert(0, str(Path(__file__).parent))  # so we can import emails.py from this folder
+from emails import emails  # noqa: E402
+
+# The system prompt holds the instructions AND the examples. XML tags keep each part separate.
+# The examples are deliberately different from each other so the model learns the pattern,
+# not the exact wording.
+SYSTEM = """You turn customer emails for an internet provider into support tickets.
 
 <instructions>
 - Output only the ticket, in the exact format shown in the examples.
@@ -37,16 +45,14 @@ Account: unknown
 Location: Lalitpur
 Summary: Complete outage at an office since 9am, affecting 20 staff.
 </ticket>
-</example>`;
+</example>"""
 
-for (const email of emails) {
-  const response = await client.messages.create({
-    model: MODEL,
-    max_tokens: 1024,
-    system: SYSTEM,
-    messages: [{ role: "user", content: `<email>${email}</email>` }],
-  });
-
-  console.log("\n📧 " + email);
-  console.log(textOf(response));
-}
+for email in emails:
+    response = client.messages.create(
+        model=MODEL,
+        max_tokens=1024,
+        system=SYSTEM,
+        messages=[{"role": "user", "content": f"<email>{email}</email>"}],
+    )
+    print("\n📧 " + email)
+    print(text_of(response))

@@ -17,6 +17,8 @@ if not (os.getenv("ANTHROPIC_API_KEY") or os.getenv("ANTHROPIC_AUTH_TOKEN")):
 
 # With no arguments the SDK reads ANTHROPIC_API_KEY from the environment
 client = anthropic.Anthropic()
+# The same, for `async` code: lets you send several requests at once (Day 6) and serve web requests (Week 3)
+async_client = anthropic.AsyncAnthropic()
 
 
 def text_of(response) -> str:

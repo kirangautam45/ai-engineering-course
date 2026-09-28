@@ -9,7 +9,7 @@
 ## Week 1 — LLM Foundations (Days 1–5)
 
 ### Day 1 — Your first LLM API call ✅
-**Objective:** Send a prompt to an LLM from Node.js and read the response.
+**Objective:** Send a prompt to an LLM from Python and read the response.
 **Teach:**
 - What an LLM is: a model trained to predict the next token. Show a chat app, then show that the same thing is "just" an HTTP request.
 - API keys: create one in the Anthropic Console, put it in `.env`, add `.env` to `.gitignore`. Explain what happens when a key leaks on GitHub.
@@ -23,7 +23,7 @@
 **Teach:**
 - Tokens are pieces of words. Count the same sentence in English and in Nepali and compare.
 - The context window is the model's working memory. Everything (system prompt, history, documents, answer) has to fit.
-- Input vs output pricing, and why output costs more. Use `countTokens()` before sending and `usage` after.
+- Input vs output pricing, and why output costs more. Use `count_tokens()` before sending and `usage` after.
 - Choosing a model: bigger models are smarter but cost more. Show the pricing page.
 **Homework:** A table of five prompts with their tokens and cost, plus two sentences on what makes a prompt expensive.
 **Code:** [week-01/day-02-tokens-cost](week-01/day-02-tokens-cost)
@@ -42,8 +42,8 @@
 **Objective:** Stream model output to the terminal as it is generated.
 **Teach:**
 - Why streaming matters for UX: time to first token vs total time.
-- `messages.stream()` and `for await`. Log every event type once so students see the full event sequence.
-- Use `finalMessage()` to get the complete response and usage after the stream ends.
+- `messages.stream()` and `stream.text_stream`. Log every event type once so students see the full event sequence.
+- Use `get_final_message()` to get the complete response and usage after the stream ends.
 - Preview: in Week 3 we send these same chunks to a browser.
 **Homework:** Add streaming to the Day 3 quiz master.
 **Code:** [week-01/day-04-streaming](week-01/day-04-streaming)
@@ -92,7 +92,7 @@
 **Teach:**
 - Why "reply in JSON" is not enough: stray text, missing fields.
 - Use `output_config.format` with a JSON schema so the output always matches.
-- Validate with Zod anyway, and handle failures gracefully.
+- Describe the shape with a Pydantic model, and handle failures gracefully.
 - Use case: extract name, email, issue and priority from a support email.
 **Homework:** An extractor that turns a job posting into `{ title, company, skills[], salary }`.
 **Code:** [week-02/day-09-structured-output](week-02/day-09-structured-output)

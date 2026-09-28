@@ -12,7 +12,7 @@ The same model gives very different answers depending on how you ask. Today you 
 ## Run it
 
 ```bash
-npm run day6
+python run.py day6
 ```
 
 The script sends one customer review with three prompts and prints all three answers.
@@ -27,7 +27,7 @@ The script sends one customer review with three prompts and prints all three ans
 
 1. The review is wrapped in `<review>` tags in prompt 3 so the model can tell the data apart from the instructions. More on this tomorrow.
 2. Every rule in prompt 3 comes with a reason: "because this goes straight into a dashboard". The model uses the reason to handle cases the rule doesn't cover.
-3. `Promise.all` runs the three requests at the same time, so you wait for the slowest one instead of all three in a row.
+3. `asyncio.gather` runs the three requests at the same time, so you wait for the slowest one instead of all three in a row. It needs the SDK's async client (`async_client`) and `async`/`await` functions: a pattern you'll use again in Week 3.
 
 ## Try it
 

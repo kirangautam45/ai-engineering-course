@@ -14,6 +14,7 @@ ROOT = Path(__file__).parent
 # Shortcuts that aren't "dayN"
 ALIASES = {
     "day25:samples": ROOT / "week-05/day-25-practice-semantic-notes/load_samples.py",
+    "day35:compare": ROOT / "week-07/day-35-practice-better-docuchat/solution/compare.py",
 }
 
 

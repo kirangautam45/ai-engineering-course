@@ -12,14 +12,14 @@ Code checks can't tell whether "The weather comes from a free service named Open
 ## Run it
 
 ```bash
-npm run day37                  # check the judge against human grades
-npm run day36                  # produce answers to judge (if you haven't)
-npm run day37 -- --last-run    # judge those answers, and compare with the code checks
+python run.py day37                  # check the judge against human grades
+python run.py day36                  # produce answers to judge (if you haven't)
+python run.py day37 --last-run    # judge those answers, and compare with the code checks
 ```
 
 ## The judge
 
-[`../judge.js`](../judge.js) sends the question, the human's reference answer and the bot's answer, with a rubric:
+[`../judge.py`](../judge.py) sends the question, the human's reference answer and the bot's answer, with a rubric:
 
 - **correct**: has the key facts of the reference and nothing that contradicts it. Wording and length don't matter.
 - **partially_correct**: some key facts, but misses an important one or adds something wrong.
@@ -33,7 +33,7 @@ Two details matter:
 
 ## Calibrate before you trust
 
-[`human-labels.js`](human-labels.js) has 14 answers graded by a human, including tricky ones:
+[`human_labels.py`](human_labels.py) has 14 answers graded by a human, including tricky ones:
 
 | Answer | Human grade | What it tests |
 |---|---|---|
@@ -43,7 +43,7 @@ Two details matter:
 | "Canberra is the capital of Australia." | incorrect | True, but not from the course |
 | "The course is free and open source…" | incorrect | Sounds plausible, isn't in the lessons |
 
-`npm run day37` grades them all and reports the agreement. As a rule of thumb, **aim for 85%+** before using the judge to make decisions, and look at every disagreement: sometimes the judge is right and the human label is wrong.
+`python run.py day37` grades them all and reports the agreement. As a rule of thumb, **aim for 85%+** before using the judge to make decisions, and look at every disagreement: sometimes the judge is right and the human label is wrong.
 
 When the judge fails calibration, fix the **rubric** (add the rule it got wrong, with an example), not the individual answers.
 

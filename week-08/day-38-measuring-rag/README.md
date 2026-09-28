@@ -11,9 +11,9 @@
 ## Run it
 
 ```bash
-npm run day27   # if the lessons aren't ingested yet
-npm run day38
-npm run day38 -- --retrieval vector
+python run.py day27   # if the lessons aren't ingested yet
+python run.py day38
+python run.py day38 --retrieval vector
 ```
 
 ## The report
@@ -21,7 +21,7 @@ npm run day38 -- --retrieval vector
 ```
 ── Retrieval ─────────────────────────────
 Right lesson in top 5:         22/22 (100%)
-MRR:                           0.87
+MRR:                           0.86
 ── Generation ────────────────────────────
 Correct answers:               …
 Correct when retrieval hit:    …
@@ -46,7 +46,7 @@ The retrieval numbers above are real: with hybrid search and reranking (Week 7),
 
 ## Groundedness
 
-`checkGrounded()` in [`../judge.js`](../judge.js) gives a model the retrieved chunks and the answer, and asks it to list every claim the chunks **don't** support. It needs no reference answer, so you can run it on real user traffic too.
+`check_grounded()` in [`../judge.py`](../judge.py) gives a model the retrieved chunks and the answer, and asks it to list every claim the chunks **don't** support. It needs no reference answer, so you can run it on real user traffic too.
 
 It catches two problems that correctness alone misses:
 

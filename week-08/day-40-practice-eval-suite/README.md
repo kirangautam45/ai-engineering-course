@@ -5,7 +5,7 @@ No new theory today. You combine Days 36–39 into **one command** that tells yo
 ## What you will build
 
 ```bash
-npm run eval
+python run.py eval
 ```
 
 ```
@@ -15,10 +15,10 @@ Eval: 30 questions · retrieval hybrid+rerank · code + judge + groundedness
 …
 Score: 26/30 (87%) · answerable 19/22 · unanswerable 7/8
 Answers cost $0.16 · took 48s
-Previous run with these settings: 83% (2026-09-28T06-42-47-787Z.json)
+Previous run with these settings: 83% (2026-09-28T06-42-47.json)
   🔻 REGRESSION rrf: judge: incorrect (…)
   🔺 now passing: best-chunking
-Report saved: week-08/day-40-practice-eval-suite/reports/2026-09-28T07-10-02-114Z.json
+Report saved: week-08/day-40-practice-eval-suite/reports/2026-09-28T07-10-02.json
 
 ❌ FAILED: 1 regression(s)
 ```
@@ -27,7 +27,7 @@ Report saved: week-08/day-40-practice-eval-suite/reports/2026-09-28T07-10-02-114
 
 ## Requirements
 
-1. **Run** every question in the eval set through the real pipeline ([`lib/rag.js`](../../lib/rag.js)).
+1. **Run** every question in the eval set through the real pipeline ([`ailib/rag.py`](../../ailib/rag.py)).
 2. **Grade** each answer with the code checks (Day 36), and unless `--quick`, the LLM judge (Day 37) and groundedness (Day 38).
 3. **Save a report** to `reports/` with the date, settings, score, cost and every answer.
 4. **Compare** with the previous report **that used the same settings**, and list:
@@ -42,7 +42,7 @@ A run with `--quick` skips the judge, so it passes more easily. Comparing it wit
 
 ## Reference solution
 
-[`solution/eval.js`](solution/eval.js). Try building it yourself first.
+[`solution/main.py`](solution/main.py). Try building it yourself first.
 
 ## Using it
 
@@ -52,14 +52,14 @@ A run with `--quick` skips the judge, so it passes more easily. Comparing it wit
 
 ## Checklist
 
-- [ ] `npm run eval -- --quick` runs and saves a report
+- [ ] `python run.py eval --quick` runs and saves a report
 - [ ] Running it twice without changes reports no regressions
-- [ ] `npm run eval -- --retrieval vector` compares only with earlier `vector` runs
+- [ ] `python run.py eval --retrieval vector` compares only with earlier `vector` runs
 - [ ] A score below the threshold exits with code 1 (`echo $?` after the run)
 - [ ] You can explain every failing question in the latest report
 
 ## Stretch goals
 
-1. **GitHub Actions**: run `npm run eval -- --quick` on every pull request. You'll need an API key as a repository secret, and an Atlas database the workflow can reach.
+1. **GitHub Actions**: run `python run.py eval --quick` on every pull request. You'll need an API key as a repository secret, and an Atlas database the workflow can reach.
 2. **Trend chart**: read every report in `reports/` and draw the score over time (an HTML page with a chart library, or Day 14's React app).
 3. **Flakiness**: run each question 3 times and flag any whose result changes. Those questions or checks need attention.

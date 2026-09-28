@@ -11,36 +11,36 @@
 
 ## The eval set
 
-[`../eval-set.js`](../eval-set.js) has 30 questions about this course:
+[`../eval_set.py`](../eval_set.py) has 30 questions about this course:
 
 | Type | Count | What a good answer does |
 |---|---|---|
 | **Answerable** | 22 | States the key facts, cites the right lesson |
 | **Unanswerable** | 8 | Says it doesn't know (exam dates, fees, "Day 50", the capital of Australia...) |
 
-Each answerable question lists the lesson(s) that answer it (`sources`), the facts a correct answer must contain (`mustMention`), and a human-written `reference` answer (used tomorrow). One question is in Nepali.
+Each answerable question lists the lesson(s) that answer it (`sources`), the facts a correct answer must contain (`must_mention`), and a human-written `reference` answer (used tomorrow). One question is in Nepali.
 
 **Good eval questions** come from real users when you can get them, cover every kind of question the app gets, include edge cases (other languages, vague questions, things that aren't in the documents), and have answers you've checked yourself.
 
 ## Run it
 
 ```bash
-npm run day27                                # if the lessons aren't ingested yet
-npm run day36
-npm run day36 -- --only weather-api
-npm run day36 -- --retrieval vector          # compare with plain vector search
+python run.py day27                                # if the lessons aren't ingested yet
+python run.py day36
+python run.py day36 --only weather-api
+python run.py day36 --retrieval vector          # compare with plain vector search
 ```
 
 Each question gets ✅ or ❌ with the reasons, then a summary per type. Every answer is saved to `last-run.json` so you can read what was actually said.
 
 ## Code-based checks
 
-[`../checks.js`](../checks.js) grades answers with plain JavaScript:
+[`../checks.py`](../checks.py) grades answers with plain Python:
 
 | Check | For | How |
 |---|---|---|
 | Says it doesn't know | Unanswerable questions | A regular expression for "don't know", "not mentioned", "doesn't contain"... |
-| Mentions the key facts | Answerable questions | Every `mustMention` item appears (case-insensitive); `["a", "b"]` means either is fine |
+| Mentions the key facts | Answerable questions | Every `must_mention` item appears (case-insensitive); `["a", "b"]` means either is fine |
 | Has citations | Answerable questions | At least one citation (Day 29) |
 | Cites the right lesson | Answerable questions | A citation comes from one of the expected `sources` |
 

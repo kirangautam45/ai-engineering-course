@@ -15,6 +15,7 @@ ROOT = Path(__file__).parent
 ALIASES = {
     "day25:samples": ROOT / "week-05/day-25-practice-semantic-notes/load_samples.py",
     "day35:compare": ROOT / "week-07/day-35-practice-better-docuchat/solution/compare.py",
+    "eval": ROOT / "week-08/day-40-practice-eval-suite/solution/main.py",
 }
 
 
@@ -48,6 +49,7 @@ def main() -> None:
 
     # Run the lesson as if you'd typed `python <script> <args>`, from the repo root
     sys.argv = [str(script), *args]
+    sys.path.insert(0, str(script.parent))  # so a lesson can import files next to it, as with `python <script>`
     runpy.run_path(str(script), run_name="__main__")
 
 

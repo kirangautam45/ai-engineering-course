@@ -13,8 +13,8 @@ Your AI feature works on your laptop. On the internet, people will send it a tho
 ## Run it
 
 ```bash
-npm run day27   # if the lessons aren't ingested yet
-npm run day39
+python run.py day27   # if the lessons aren't ingested yet
+python run.py day39
 ```
 
 Then try the requests below (or use Postman):
@@ -26,12 +26,12 @@ curl localhost:3000/api/stats
 
 ## The seven guardrails
 
-All in [`server.js`](server.js), using helpers from [`lib/guardrails.js`](../../lib/guardrails.js):
+All in [`main.py`](main.py), using helpers from [`ailib/guardrails.py`](../../ailib/guardrails.py):
 
 | # | Guardrail | What happens |
 |---|---|---|
-| 1 | Small request bodies | `express.json({ limit: "5kb" })` rejects huge bodies |
-| 2 | Rate limit | 5 questions per minute per user, then `429` with a `Retry-After` header |
+| 1 | Small request bodies | A middleware rejects bodies over 5 KB with `413` (as on Day 11) |
+| 2 | Rate limit | 5 questions per minute per user, then `429` with a `Retry-After` header. It's a FastAPI dependency (`Depends(rate_limited)`), so it runs before the endpoint |
 | 3 | Input validation | Empty questions and questions over 500 characters get `400` |
 | 4 | Redact the input | API keys, passwords, emails, Nepali phone numbers and card numbers are replaced with `[API_KEY REMOVED]` etc. **before** the model or the log sees them |
 | 5 | Timeouts and retries | 30 seconds per attempt, 2 automatic retries for temporary errors |

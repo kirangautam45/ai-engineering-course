@@ -26,8 +26,8 @@ Pick one, change it to fit your interests, or bring your own. ⭐ = difficulty.
 | Idea | Difficulty | Notes |
 |---|---|---|
 | **Code review assistant** for student assignments | ⭐⭐ | Day 15's reviewer persona + structured output for a score |
-| **English ↔ Nepali learning buddy** with quizzes and progress | ⭐⭐ | Try `lib/llm.js` to compare providers for Nepali |
-| **Voice notes to study notes**: transcribe a lecture recording and summarize it | ⭐⭐⭐ | `transcribe()` in `lib/llm.js` (Qwen Omni or OpenAI), then chunk and summarize |
+| **English ↔ Nepali learning buddy** with quizzes and progress | ⭐⭐ | Try `ailib/llm.py` to compare providers for Nepali |
+| **Voice notes to study notes**: transcribe a lecture recording and summarize it | ⭐⭐⭐ | `transcribe()` in `ailib/llm.py` (Qwen Omni or OpenAI), then chunk and summarize |
 
 ## Avoid
 

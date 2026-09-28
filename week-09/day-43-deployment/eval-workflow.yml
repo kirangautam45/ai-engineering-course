@@ -13,12 +13,12 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run eval -- --quick --threshold 0.8
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e .
+      - run: python run.py eval --quick --threshold 0.8
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MONGODB_URI: ${{ secrets.MONGODB_URI }}

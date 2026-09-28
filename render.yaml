@@ -3,19 +3,19 @@
 services:
   - type: web
     name: docuchat-pro
-    runtime: node
+    runtime: python
     plan: free # 512 MB memory: use hosted embeddings (EMBEDDING_PROVIDER=openai or qwen)
-    buildCommand: npm ci && npm run warm-models
-    startCommand: npm run docuchat
+    buildCommand: pip install -e . && python run.py warm-models
+    startCommand: python run.py docuchat
     healthCheckPath: /api/health
     envVars:
-      - key: NODE_ENV
-        value: production
+      - key: PYTHON_VERSION
+        value: 3.12.8
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: MONGODB_URI
         sync: false
-      - key: EMBEDDING_PROVIDER # openai or qwen on the free plan (local needs ~700 MB more memory)
+      - key: EMBEDDING_PROVIDER # openai or qwen on the free plan (local needs ~1 GB of memory)
         sync: false
       - key: OPENAI_API_KEY # only if EMBEDDING_PROVIDER=openai
         sync: false

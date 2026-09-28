@@ -200,7 +200,7 @@
 **Objective:** Explain embeddings and compute similarity by hand.
 **Teach:**
 - An embedding is a list of numbers that captures meaning, so similar text gets nearby vectors.
-- Cosine similarity in 10 lines of JavaScript.
+- Cosine similarity in a few lines of Python (NumPy).
 - Keyword search vs semantic search: "car" should find "vehicle".
 **Homework:** Embed 20 sentences and print the closest pair.
 **Code:** [week-05/day-21-what-are-embeddings](week-05/day-21-what-are-embeddings)
@@ -208,7 +208,7 @@
 ### Day 22 — Generating embeddings ✅
 **Objective:** Create embeddings with an embeddings API.
 **Teach:**
-- Claude doesn't make embeddings. This course uses a free local model with Transformers.js; Voyage AI (recommended by Anthropic) is the hosted alternative.
+- Claude doesn't make embeddings. This course uses a free local model with `fastembed`; Voyage AI (recommended by Anthropic) is the hosted alternative.
 - Document vs query embeddings, dimensions, batching and cost.
 **Homework:** Embed every lesson README in this repo and save the vectors to JSON.
 **Code:** [week-05/day-22-generating-embeddings](week-05/day-22-generating-embeddings)
@@ -254,7 +254,7 @@
 **Teach:**
 - Load PDF, Markdown and web pages, clean the text, chunk, embed and store.
 - Re-ingesting changed files without creating duplicates.
-**Homework:** An `ingest.js` script that processes a whole folder.
+**Homework:** An ingestion script that processes a whole folder.
 **Code:** [week-06/day-27-ingestion](week-06/day-27-ingestion)
 
 ### Day 28 — Retrieval and answering ✅
@@ -362,7 +362,7 @@
 
 ### Day 40 — 🛠️ Practice: eval suite ✅
 **Objective:** Automate quality checks.
-**Build:** `npm run eval` runs the 30 test questions, grades them and prints a score. Run it before and after every prompt change.
+**Build:** `python run.py eval` runs the 30 test questions, grades them and prints a score. Run it before and after every prompt change.
 **Code:** [week-08/day-40-practice-eval-suite](week-08/day-40-practice-eval-suite)
 
 ---

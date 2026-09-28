@@ -16,6 +16,9 @@ ALIASES = {
     "day25:samples": ROOT / "week-05/day-25-practice-semantic-notes/load_samples.py",
     "day35:compare": ROOT / "week-07/day-35-practice-better-docuchat/solution/compare.py",
     "eval": ROOT / "week-08/day-40-practice-eval-suite/solution/main.py",
+    "docuchat": ROOT / "week-09/docuchat-pro/main.py",
+    "warm-models": ROOT / "week-09/docuchat-pro/warm_models.py",
+    "providers": ROOT / "extras/compare-providers/main.py",
 }
 
 
@@ -39,6 +42,9 @@ def main() -> None:
             script = find_script(day)
             if script:
                 print(f"day{day:<3} {script.relative_to(ROOT)}")
+        print()
+        for alias, script in ALIASES.items():
+            print(f"{alias:<14} {script.relative_to(ROOT)}")
         return
 
     script = ALIASES.get(name)

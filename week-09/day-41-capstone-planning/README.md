@@ -6,7 +6,7 @@ For the last five days you build and ship **your own** AI app. Today you decide 
 
 1. Pick a problem and a user
 2. Write a one-page plan ([`project-plan-template.md`](project-plan-template.md))
-3. Write 10 eval questions **before** writing any code ([`eval-set-template.js`](eval-set-template.js))
+3. Write 10 eval questions **before** writing any code ([`eval_set_template.py`](eval_set_template.py))
 4. Get your plan approved by the instructor
 
 ## Choosing a project

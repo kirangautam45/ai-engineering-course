@@ -16,7 +16,7 @@ The course's capstone reference app: everything from Weeks 3–8 in one deployab
 ## Run it locally
 
 ```bash
-npm run docuchat
+python run.py docuchat
 ```
 
 Open http://localhost:3000. With no `ADMIN_TOKEN` in `.env`, anyone can upload (fine on your laptop).
@@ -40,7 +40,7 @@ Follow [Day 43](../day-43-deployment/README.md). The repo's [`render.yaml`](../.
 
 | Method | Route | Notes |
 |---|---|---|
-| `GET` | `/api/health` | `{ ok: true }` when the database is reachable |
+| `GET` | `/api/health` | `{"ok": true}` when the database is reachable |
 | `GET` | `/api/documents` | List documents |
 | `POST` | `/api/documents` | Upload (`file` field). Admin only when `ADMIN_TOKEN` is set |
 | `DELETE` | `/api/documents/:source` | Admin only when `ADMIN_TOKEN` is set |

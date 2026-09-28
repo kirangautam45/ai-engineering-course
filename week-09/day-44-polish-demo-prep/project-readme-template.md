@@ -18,11 +18,11 @@ question → search my documents (hybrid + rerank) → Claude answers with citat
 
 - **Data:** <what documents, how many, where from>
 - **Model:** Claude (<model>), embeddings: <provider>
-- **Built with:** Node.js, Express, MongoDB Atlas Vector Search, <anything else>
+- **Built with:** Python, FastAPI, MongoDB Atlas Vector Search, <anything else>
 
 ## Results
 
-Evaluated on <N> questions (see `eval-set.js`):
+Evaluated on <N> questions (see `eval_set.py`):
 
 | Metric | Result |
 |---|---|
@@ -36,10 +36,11 @@ Evaluated on <N> questions (see `eval-set.js`):
 ```bash
 git clone <repo>
 cd <repo>
-npm install
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
 cp .env.example .env   # add your keys
-npm run ingest -- ./documents
-npm start
+python ingest.py ./documents
+python main.py
 ```
 
 ## Limitations and next steps

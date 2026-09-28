@@ -19,7 +19,7 @@ At every step you have something that runs. If you run out of time, you still ha
 - [ ] **Data**: your documents are ingested (Day 27) and a search returns sensible chunks (Day 24). Check this first: nothing else works without it
 - [ ] **Answer**: one question, from the terminal, answered correctly with citations
 - [ ] **Evals**: run your 10 eval questions (Day 36, `--quick` style). Write down the score, even if it's 3/10
-- [ ] **API**: an Express route returns the answer (Day 11)
+- [ ] **API**: a FastAPI route returns the answer (Day 11)
 - [ ] **Page**: a web page shows the answer (Days 12 / 14 / DocuChat Pro)
 - [ ] **Commit** after every item on this list
 
@@ -28,14 +28,14 @@ At every step you have something that runs. If you run out of time, you still ha
 If your project is about questions over documents, [DocuChat Pro](../docuchat-pro) already does the core flow:
 
 ```bash
-npm run docuchat
+python run.py docuchat
 ```
 
 Then make it yours:
 
-1. Change the system prompt in `server.js` for your users (tone, language, what to say when it doesn't know).
+1. Change the system prompt in `main.py` for your users (tone, language, what to say when it doesn't know).
 2. Change the page's title and help text.
-3. Ingest your own documents: `npm run day27 -- ./my-documents`, or upload them in the page.
+3. Ingest your own documents: `python run.py day27 ./my-documents`, or upload them in the page.
 4. Point your eval set at your documents and run it.
 
 ## When you're stuck

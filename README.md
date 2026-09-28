@@ -9,8 +9,6 @@
 ![Claude API](https://img.shields.io/badge/Claude-API-D97757?logo=anthropic&logoColor=white)
 
 > 🐍 **This is the Python version** (branch [`python`](https://github.com/kirangautam45/ai-engineering-course/tree/python)). The JavaScript/Node.js version is on [`main`](https://github.com/kirangautam45/ai-engineering-course).
->
-> 🚧 **Conversion in progress:** Weeks 1–7 are in Python. Weeks 8–9 still contain the JavaScript code and are being converted.
 
 > ⭐ **If this course helps you learn or teach AI engineering, please star the repo.** It helps other students find it.
 
@@ -93,7 +91,7 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 11 | [A FastAPI chat API](week-03/day-11-fastapi-chat-api) | `python run.py day11` |
 | 12 | [Streaming to the browser (SSE)](week-03/day-12-sse-streaming) | `python run.py day12` |
 | 13 | [Saving conversations in MongoDB](week-03/day-13-mongodb-conversations) | `python run.py day13` |
-| 14 | [A React chat UI](week-03/day-14-react-chat-ui) | `npm run dev` in its folder (React) |
+| 14 | [A React chat UI](week-03/day-14-react-chat-ui) | `python run.py dev` in its folder (React) |
 | 15 | [🛠️ Practice: full-stack chat app](week-03/day-15-practice-chat-app) | Project spec |
 | 16 | [Your first tool: a calculator](week-04/day-16-first-tool) | `python run.py day16` |
 | 17 | [Multiple tools, parallel calls and errors](week-04/day-17-multiple-tools) | `python run.py day17` |
@@ -143,10 +141,10 @@ The lessons use `claude-opus-5` by default. To try a different model, set `MODEL
 
 ## Using other providers
 
-The lessons use Claude, but [`lib/llm.js`](lib/llm.js) gives you one simple interface for **OpenAI, DeepSeek, Qwen and local models (Ollama)** too: chat, streaming, images and audio. See [extras/compare-providers](extras/compare-providers) to set them up and compare their answers side by side:
+The lessons use Claude, but [`ailib/llm.py`](ailib/llm.py) gives you one simple interface for **OpenAI, DeepSeek, Qwen and local models (Ollama)** too: chat, streaming, images and audio. See [extras/compare-providers](extras/compare-providers) to set them up and compare their answers side by side:
 
 ```bash
-npm run providers -- "Explain recursion to a 10-year-old"
+python run.py providers "Explain recursion to a 10-year-old"
 ```
 
 ## Scope notes

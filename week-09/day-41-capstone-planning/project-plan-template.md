@@ -33,11 +33,11 @@ Who will use it? One specific person or group.
 
 ## 6. Techniques from the course
 
-Tick the ones you'll use: ☐ RAG ☐ Citations ☐ Tools ☐ Streaming ☐ Structured output ☐ Hybrid search / reranking ☐ Evals ☐ Guardrails ☐ Other providers (`lib/llm.js`)
+Tick the ones you'll use: ☐ RAG ☐ Citations ☐ Tools ☐ Streaming ☐ Structured output ☐ Hybrid search / reranking ☐ Evals ☐ Guardrails ☐ Other providers (`ailib/llm.py`)
 
 ## 7. How I'll measure success
 
-- Eval set: 10 questions in `eval-set.js` (at least 3 unanswerable)
+- Eval set: 10 questions in `eval_set.py` (at least 3 unanswerable)
 - Target: <e.g. 8/10 correct, all unanswerable questions answered "I don't know">
 - Other: <e.g. answers in under 5 seconds, costs under $0.01 per question>
 

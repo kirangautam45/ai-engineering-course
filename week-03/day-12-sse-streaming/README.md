@@ -13,7 +13,7 @@ On Day 4 you streamed text to the terminal. Today you stream it all the way to a
 ## Run it
 
 ```bash
-npm run day12
+python run.py day12
 ```
 
 Open http://localhost:3000 and ask for something long, like "Explain how the internet works in 10 steps."
@@ -32,11 +32,11 @@ data: {"type":"done","stopReason":"end_turn","usage":{...}}
 
 ## Walkthrough
 
-**Server ([`server.js`](server.js))**
+**Server ([`main.py`](main.py))**
 
-1. `Content-Type: text/event-stream` tells the browser more data is coming on this response.
-2. For each `text_delta` from the SDK, we `res.write()` one `data: ...` line followed by a blank line.
-3. `res.on("close")` fires when the browser disconnects. If we haven't finished, `stream.abort()` stops the model.
+1. `StreamingResponse(events(), media_type="text/event-stream")` sends whatever the `events()` generator yields, as it yields it. The media type tells the browser more data is coming.
+2. `events()` is an **async generator**: for each piece of `stream.text_stream`, it `yield`s one `data: ...` line followed by a blank line.
+3. When the browser disconnects, FastAPI stops the generator. Leaving the `async with client.messages.stream(...)` block closes the connection to Claude, so the model stops too. The `finally:` block runs either way.
 4. Errors after the stream has started can't change the status code, so we send `{ type: "error" }` as an event.
 
 **Browser ([`public/index.html`](public/index.html))**

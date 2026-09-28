@@ -8,11 +8,11 @@ A ChatGPT-style app where the user picks an **assistant** when starting a new ch
 
 | Assistant | What it does |
 |---|---|
-| JavaScript Tutor | Explains concepts step by step, gives hints before answers |
+| Python Tutor | Explains concepts step by step, gives hints before answers |
 | English ↔ Nepali Translator | Translates in either direction |
 | Code Reviewer | Reviews pasted code for bugs, security and readability |
 
-The system prompts are ready for you in [`personas.js`](personas.js).
+The system prompts are ready for you in [`personas.py`](personas.py).
 
 ## Requirements
 
@@ -20,7 +20,7 @@ Start from a copy of the Day 13 server and the Day 14 React app.
 
 **Backend**
 
-1. Add a `persona` field to the `Conversation` model (default `"tutor"`).
+1. Save a `persona` field on each conversation document (default `"tutor"`).
 2. Add `GET /api/personas`, returning each persona's `id`, `name` and `description`. **Don't** send the system prompts to the browser.
 3. `POST /api/conversations` accepts `{ persona }`. Reject unknown ids with a 400.
 4. When replying, use the conversation's persona's `system` prompt instead of the fixed `SYSTEM`.

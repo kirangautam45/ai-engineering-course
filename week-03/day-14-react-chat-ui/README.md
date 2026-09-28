@@ -12,13 +12,13 @@ Today you build the front end for the Day 13 API: a sidebar of saved chats, stre
 
 ## Run it
 
-You need two terminals. First, start the Day 13 API from the repo root:
+You need two terminals. First, start the Day 13 API (Python) from the repo root:
 
 ```bash
-npm run day13
+python run.py day13
 ```
 
-Then start this React app:
+Then start this React app (it's JavaScript, because browsers run JavaScript; you need [Node.js](https://nodejs.org) 22+ for this lesson only):
 
 ```bash
 cd week-03/day-14-react-chat-ui
@@ -43,7 +43,7 @@ src/
 
 ## Walkthrough
 
-1. **`vite.config.js`** proxies `/api` to `localhost:3000`. The browser thinks everything comes from one site, so you don't need CORS.
+1. **`vite.config.js`** proxies `/api` to `localhost:3000`, where the Python API runs. The browser thinks everything comes from one site, so you don't need CORS. (If port 3000 is already used by another app, start the API with `PORT=3001 python run.py day13` and change the proxy target to match.)
 2. **`api.sendMessage()`** is the Day 12 stream reader, moved into a function that calls `onText()` for each chunk.
 3. **Streaming into state:** when the user sends a message we add their bubble *and* an empty assistant bubble. Each `onText` replaces the last message with a copy that has the new text appended. Never mutate state directly.
 4. **`<Markdown>`** from `react-markdown` renders the model's formatting. It ignores raw HTML by default, which matters: text from a model should be treated like any other untrusted user input.

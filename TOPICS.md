@@ -106,19 +106,19 @@
 
 ## Week 3 — AI in Your Web Apps (Days 11–15)
 
-### Day 11 — An Express chat API ✅
+### Day 11 — A FastAPI chat API ✅
 **Objective:** Expose an LLM through your own backend.
 **Teach:**
 - Never call the LLM API from the browser: your key would be public. The backend is the gatekeeper.
-- `POST /api/chat` receives `{ messages }` and returns the reply. Reuse `lib/ask.js`.
+- `POST /api/chat` receives `{"messages": [...]}` and returns the reply. Pydantic models validate the request, and FastAPI documents it at `/docs`.
 - Validate input size so nobody sends you a 1-million-token request.
 **Homework:** Add a `POST /api/summarize` endpoint.
-**Code:** [week-03/day-11-express-chat-api](week-03/day-11-express-chat-api)
+**Code:** [week-03/day-11-fastapi-chat-api](week-03/day-11-fastapi-chat-api)
 
 ### Day 12 — Streaming to the browser (SSE) ✅
-**Objective:** Stream tokens from Express to a web page.
+**Objective:** Stream tokens from FastAPI to a web page.
 **Teach:**
-- Server-Sent Events: `Content-Type: text/event-stream` and `res.write()`.
+- Server-Sent Events: `StreamingResponse` with `text/event-stream` and an async generator that `yield`s each event.
 - Forward each `text_delta` from the SDK stream to the client.
 - Handle client disconnects by aborting the stream so you stop paying for tokens nobody reads.
 **Homework:** Show a typing indicator until the first token arrives.
@@ -144,7 +144,7 @@
 
 ### Day 15 — 🛠️ Practice: full-stack chat app ✅
 **Objective:** Ship a working ChatGPT-style app.
-**Build:** React + Express + MongoDB chat with streaming, saved conversations and a system-prompt picker (tutor, translator, code reviewer).
+**Build:** React + FastAPI + MongoDB chat with streaming, saved conversations and a system-prompt picker (tutor, translator, code reviewer).
 **Code:** [week-03/day-15-practice-chat-app](week-03/day-15-practice-chat-app)
 
 ---

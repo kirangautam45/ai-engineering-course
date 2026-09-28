@@ -7,6 +7,10 @@ license = { text = "MIT" }
 dependencies = [
     "anthropic>=1.8",
     "python-dotenv>=1.0",
+    # Week 3 onward: web APIs and MongoDB
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pymongo>=4.13",
 ]
 
 [build-system]

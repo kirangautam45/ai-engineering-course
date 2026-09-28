@@ -4,7 +4,7 @@ On Day 12 the history lived in the browser, so refreshing the page wiped it. Tod
 
 ## What you will learn
 
-- A `Conversation` model with an embedded `messages` array
+- A `conversations` collection where each document embeds its `messages` array, using PyMongo's async client
 - Why the client should send only the **new** message, not the whole history
 - Saving the user's message **before** calling the model, and the reply after
 - **Trimming history**: only the last 20 messages go to the model, to control cost
@@ -20,7 +20,7 @@ MONGODB_URI=mongodb+srv://user:password@cluster0.xxxxx.mongodb.net/ai-course
 ## Run it
 
 ```bash
-npm run day13
+python run.py day13
 ```
 
 Use [`requests.http`](requests.http) or Postman to create a conversation, send two messages and fetch the saved result.
@@ -41,14 +41,15 @@ Use [`requests.http`](requests.http) or Postman to create a conversation, send t
 2. **Save first, then call the model.** If the API call fails, the user's message is still saved.
 3. **`HISTORY_LIMIT`** keeps requests small. We also drop messages from the front until the history starts with a `user` message, because the API requires that.
 4. **Partial replies are saved.** If the user presses Stop, the half-finished answer is kept so the conversation still makes sense.
-5. **`app.param("id")`** returns a 404 for malformed ids before they reach MongoDB.
+5. **`find_conversation()`** checks `ObjectId.is_valid()` and returns a 404 for malformed ids before they reach MongoDB.
+6. **`asyncio.shield()`** protects the final save: when the user presses Stop, FastAPI cancels the request, and without the shield the save could be cancelled too.
 
 ## Try it
 
-- Send 25 messages in one conversation. How many does the model see? (Log `history.length`.)
+- Send 25 messages in one conversation. How many does the model see? (Print `len(history)`.)
 - Ask the model about something from message 1 after 25 messages. Does it remember? Why not?
 - Look at your conversations in MongoDB Atlas → Browse Collections.
 
 ## Homework
 
-Replace the "first 50 characters" title with a real one: after the first reply, ask the model (with `effort: "low"`) for a title of at most 5 words and save it.
+Replace the "first 50 characters" title with a real one: after the first reply, ask the model (with `output_config={"effort": "low"}`) for a title of at most 5 words and save it.

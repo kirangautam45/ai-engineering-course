@@ -10,7 +10,7 @@
 
 > 🐍 **This is the Python version** (branch [`python`](https://github.com/kirangautam45/ai-engineering-course/tree/python)). The JavaScript/Node.js version is on [`main`](https://github.com/kirangautam45/ai-engineering-course).
 >
-> 🚧 **Conversion in progress:** Weeks 1–2 are in Python. Weeks 3–9 still contain the JavaScript code and are being converted.
+> 🚧 **Conversion in progress:** Weeks 1–3 are in Python. Weeks 4–9 still contain the JavaScript code and are being converted.
 
 > ⭐ **If this course helps you learn or teach AI engineering, please star the repo.** It helps other students find it.
 
@@ -90,10 +90,10 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 8 | [Thinking and effort](week-02/day-08-thinking-effort) | `python run.py day8` |
 | 9 | [Structured output (JSON)](week-02/day-09-structured-output) | `python run.py day9` |
 | 10 | [🛠️ Practice: prompt library with tests](week-02/day-10-practice-prompt-tests) | `python run.py day10` |
-| 11 | [An Express chat API](week-03/day-11-express-chat-api) | `python run.py day11` |
+| 11 | [A FastAPI chat API](week-03/day-11-fastapi-chat-api) | `python run.py day11` |
 | 12 | [Streaming to the browser (SSE)](week-03/day-12-sse-streaming) | `python run.py day12` |
 | 13 | [Saving conversations in MongoDB](week-03/day-13-mongodb-conversations) | `python run.py day13` |
-| 14 | [A React chat UI](week-03/day-14-react-chat-ui) | `python run.py dev` in its folder |
+| 14 | [A React chat UI](week-03/day-14-react-chat-ui) | `npm run dev` in its folder (React) |
 | 15 | [🛠️ Practice: full-stack chat app](week-03/day-15-practice-chat-app) | Project spec |
 | 16 | [Your first tool: a calculator](week-04/day-16-first-tool) | `python run.py day16` |
 | 17 | [Multiple tools, parallel calls and errors](week-04/day-17-multiple-tools) | `python run.py day17` |

@@ -1,0 +1,10 @@
+[
+  { "title": "Networks exam", "content": "Mid-term moved to Tuesday 10 AM in Hall B. Chapters 1 to 4, focus on TCP/IP and subnetting." },
+  { "title": "Momo recipe", "content": "Mix minced chicken, onion, ginger, garlic and coriander. Wrap in thin dough and steam for 12 minutes." },
+  { "title": "Trek packing list", "content": "Down jacket, rain cover, water purification tablets, trekking poles and a headlamp for Poon Hill." },
+  { "title": "React hooks", "content": "useState stores values between renders. useEffect runs side effects after render; clean up in the return function." },
+  { "title": "पुस्तकालय", "content": "पुस्तकालय अब हरेक दिन राति ९ बजेसम्म खुल्छ। ६ बजेपछि परिचयपत्र चाहिन्छ।" },
+  { "title": "Internship", "content": "Send CV to the IT company in Lalitpur before Friday. They want Node.js and MongoDB experience." },
+  { "title": "Bus timings", "content": "Micro to college leaves Koteshwor at 6:45 AM. The last bus home is at 6 PM from the main gate." },
+  { "title": "Git reminder", "content": "Always create a new branch before starting a feature, and never commit the .env file." }
+]

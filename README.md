@@ -5,7 +5,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/kirangautam45/ai-engineering-course?style=social)](https://github.com/kirangautam45/ai-engineering-course/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
-![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=nodedotjs&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-22%2B-339933?logo=nodedotjs&logoColor=white)
 ![Claude API](https://img.shields.io/badge/Claude-API-D97757?logo=anthropic&logoColor=white)
 
 > ⭐ **If this course helps you learn or teach AI engineering, please star the repo.** It helps other students find it.
@@ -93,6 +93,11 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 18 | [The tool runner](week-04/day-18-tool-runner) | `npm run day18` |
 | 19 | [Prompt injection](week-04/day-19-prompt-injection) | `npm run day19` |
 | 20 | [🛠️ Practice: support bot for the Helpdesk API](week-04/day-20-practice-support-bot) | `npm run day20` |
+| 21 | [What are embeddings?](week-05/day-21-what-are-embeddings) | `npm run day21` |
+| 22 | [Generating and storing embeddings](week-05/day-22-generating-embeddings) | `npm run day22 -- build` |
+| 23 | [Chunking](week-05/day-23-chunking) | `npm run day23` |
+| 24 | [Vector databases (Atlas Vector Search)](week-05/day-24-vector-database) | `npm run day24:setup` |
+| 25 | [🛠️ Practice: semantic search for notes](week-05/day-25-practice-semantic-notes) | `npm run day25` |
 
 More weeks are added as the course runs. Watch the repo to get updates.
 
@@ -100,10 +105,10 @@ More weeks are added as the course runs. Watch the repo to get updates.
 
 | Tool | Notes |
 |---|---|
-| Node.js | 20.12 or newer (uses the built-in `.env` loader) |
+| Node.js | 22 or newer (uses the built-in `.env` loader and file search) |
 | [`@anthropic-ai/sdk`](https://www.npmjs.com/package/@anthropic-ai/sdk) | Official Claude SDK |
 | MongoDB Atlas | Free M0 cluster, used for chat history and Vector Search |
-| Voyage AI or Transformers.js | Embeddings (Week 5 onward) |
+| Transformers.js | Free local embeddings, no API key (Week 5 onward) |
 | Render / Vercel | Deployment (Week 9) |
 
 The lessons use `claude-opus-5` by default. To try a different model, set `MODEL` in your `.env` file.

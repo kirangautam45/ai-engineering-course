@@ -5,7 +5,7 @@
   "description": "Free 45-day AI engineering course: LLM APIs, prompt engineering, tool calling, embeddings and RAG with Node.js",
   "type": "module",
   "engines": {
-    "node": ">=20.12"
+    "node": ">=22"
   },
   "scripts": {
     "day1": "node week-01/day-01-first-call/index.js",
@@ -25,12 +25,21 @@
     "day17": "node week-04/day-17-multiple-tools/index.js",
     "day18": "node week-04/day-18-tool-runner/index.js",
     "day19": "node week-04/day-19-prompt-injection/index.js",
-    "day20": "node week-04/day-20-practice-support-bot/solution/bot.js"
+    "day20": "node week-04/day-20-practice-support-bot/solution/bot.js",
+    "day21": "node week-05/day-21-what-are-embeddings/index.js",
+    "day22": "node week-05/day-22-generating-embeddings/index.js",
+    "day23": "node week-05/day-23-chunking/index.js",
+    "day24:setup": "node week-05/day-24-vector-database/setup.js",
+    "day24": "node week-05/day-24-vector-database/search.js",
+    "day25": "node week-05/day-25-practice-semantic-notes/solution/server.js",
+    "day25:samples": "node week-05/day-25-practice-semantic-notes/load-samples.js"
   },
   "license": "MIT",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.128.0",
+    "@huggingface/transformers": "^4.3.0",
     "express": "^5.2.1",
+    "mongodb": "^7.6.0",
     "mongoose": "^9.10.2",
     "zod": "^4.6.5"
   }

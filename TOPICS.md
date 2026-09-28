@@ -196,40 +196,45 @@
 
 ## Week 5 — Embeddings and Vector Search (Days 21–25)
 
-### Day 21 — What are embeddings?
+### Day 21 — What are embeddings? ✅
 **Objective:** Explain embeddings and compute similarity by hand.
 **Teach:**
 - An embedding is a list of numbers that captures meaning, so similar text gets nearby vectors.
 - Cosine similarity in 10 lines of JavaScript.
 - Keyword search vs semantic search: "car" should find "vehicle".
 **Homework:** Embed 20 sentences and print the closest pair.
+**Code:** [week-05/day-21-what-are-embeddings](week-05/day-21-what-are-embeddings)
 
-### Day 22 — Generating embeddings
+### Day 22 — Generating embeddings ✅
 **Objective:** Create embeddings with an embeddings API.
 **Teach:**
-- Claude doesn't make embeddings. Use a dedicated model: Voyage AI (recommended by Anthropic) or a free local model with Transformers.js.
+- Claude doesn't make embeddings. This course uses a free local model with Transformers.js; Voyage AI (recommended by Anthropic) is the hosted alternative.
 - Document vs query embeddings, dimensions, batching and cost.
 **Homework:** Embed every lesson README in this repo and save the vectors to JSON.
+**Code:** [week-05/day-22-generating-embeddings](week-05/day-22-generating-embeddings)
 
-### Day 23 — Chunking
+### Day 23 — Chunking ✅
 **Objective:** Split documents into chunks that retrieve well.
 **Teach:**
 - Why you can't embed a whole book: chunks must be small and focused.
 - Fixed-size chunks with overlap vs splitting by heading or paragraph.
 - Keep metadata (source, page, heading) with every chunk.
 **Homework:** Chunk one long PDF in two different ways and compare the results.
+**Code:** [week-05/day-23-chunking](week-05/day-23-chunking)
 
-### Day 24 — Vector databases
+### Day 24 — Vector databases ✅
 **Objective:** Store and search vectors in MongoDB Atlas Vector Search.
 **Teach:**
 - Why not loop over every vector: speed and approximate nearest-neighbour search.
 - Create a vector index in Atlas and query it with `$vectorSearch`.
 - Filter by metadata (for example, only chunks from "week-02").
 **Homework:** Move your Day 22 vectors into Atlas and query them.
+**Code:** [week-05/day-24-vector-database](week-05/day-24-vector-database)
 
-### Day 25 — 🛠️ Practice: semantic notes search
+### Day 25 — 🛠️ Practice: semantic notes search ✅
 **Objective:** Build search that understands meaning.
-**Build:** Add semantic search to the Notes API from the MERN course: embed notes when they are saved, then `GET /api/notes/search?q=` returns the closest matches.
+**Build:** A Notes API with semantic search: embed notes when they are saved, then `GET /api/notes/search?q=` returns the closest matches.
+**Code:** [week-05/day-25-practice-semantic-notes](week-05/day-25-practice-semantic-notes)
 
 ---
 

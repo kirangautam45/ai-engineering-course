@@ -52,7 +52,7 @@ Atlas updates vector indexes **in the background**, usually within a second or t
 
 ## Reference solution
 
-[`solution/server.js`](solution/server.js) is a complete version. It uses the embedding helpers from `lib/` and the database helpers from [Day 24](../day-24-vector-database/db.js). Try it yourself first.
+[`solution/server.js`](solution/server.js) is a complete version. It uses the embedding helpers from `lib/` and the database helpers from [`lib/mongo.js`](../../lib/mongo.js). Try it yourself first.
 
 ## Stretch goals
 

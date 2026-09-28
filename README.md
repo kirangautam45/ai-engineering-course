@@ -98,6 +98,11 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 23 | [Chunking](week-05/day-23-chunking) | `npm run day23` |
 | 24 | [Vector databases (Atlas Vector Search)](week-05/day-24-vector-database) | `npm run day24:setup` |
 | 25 | [🛠️ Practice: semantic search for notes](week-05/day-25-practice-semantic-notes) | `npm run day25` |
+| 26 | [How RAG works](week-06/day-26-how-rag-works) | `npm run day26` |
+| 27 | [The ingestion pipeline](week-06/day-27-ingestion) | `npm run day27` |
+| 28 | [Retrieval and answering](week-06/day-28-retrieval-answering) | `npm run day28 -- "question"` |
+| 29 | [Citations](week-06/day-29-citations) | `npm run day29 -- "question"` |
+| 30 | [🛠️ Practice: DocuChat (capstone 1)](week-06/day-30-practice-docuchat) | `npm run day30` |
 
 More weeks are added as the course runs. Watch the repo to get updates.
 

@@ -240,40 +240,45 @@
 
 ## Week 6 — Retrieval-Augmented Generation (Days 26–30)
 
-### Day 26 — How RAG works
+### Day 26 — How RAG works ✅
 **Objective:** Explain RAG and when to use it.
 **Teach:**
 - The problem: models don't know your private or recent data.
 - RAG = retrieve relevant chunks, put them in the prompt, then generate.
 - RAG vs long context vs fine-tuning: when to use each.
 **Homework:** Draw the RAG pipeline for a college FAQ bot.
+**Code:** [week-06/day-26-how-rag-works](week-06/day-26-how-rag-works)
 
-### Day 27 — The ingestion pipeline
+### Day 27 — The ingestion pipeline ✅
 **Objective:** Turn raw files into searchable chunks.
 **Teach:**
 - Load PDF, Markdown and web pages, clean the text, chunk, embed and store.
 - Re-ingesting changed files without creating duplicates.
 **Homework:** An `ingest.js` script that processes a whole folder.
+**Code:** [week-06/day-27-ingestion](week-06/day-27-ingestion)
 
-### Day 28 — Retrieval and answering
+### Day 28 — Retrieval and answering ✅
 **Objective:** Answer questions using only retrieved context.
 **Teach:**
 - Put the chunks in `<document>` tags, then the question.
 - Tell the model to say "I don't know" when the answer isn't in the context, and test that it does.
 - How many chunks to include (top-k), and the cost of adding more.
 **Homework:** Ask ten questions: five with answers in your docs and five without. How many "I don't know"s are correct?
+**Code:** [week-06/day-28-retrieval-answering](week-06/day-28-retrieval-answering)
 
-### Day 29 — Citations
+### Day 29 — Citations ✅
 **Objective:** Show users where each answer came from.
 **Teach:**
 - Pass chunks as `document` blocks with `citations: { enabled: true }`.
 - Render the cited text and source under each answer.
 - Why citations build trust and make wrong answers easy to spot.
 **Homework:** Make citations clickable, so they open the source document.
+**Code:** [week-06/day-29-citations](week-06/day-29-citations)
 
-### Day 30 — 🛠️ Practice: DocuChat backend (capstone 1)
+### Day 30 — 🛠️ Practice: DocuChat backend (capstone 1) ✅
 **Objective:** A complete RAG API.
 **Build:** DocuChat: upload PDFs, ingest them, and ask questions with cited answers through `POST /api/ask`.
+**Code:** [week-06/day-30-practice-docuchat](week-06/day-30-practice-docuchat)
 
 ---
 

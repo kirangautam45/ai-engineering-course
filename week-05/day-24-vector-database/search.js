@@ -2,7 +2,7 @@
 // Run: npm run day24 -- "how do I stream to the browser?"
 //      npm run day24 -- "how do I stream to the browser?" --week week-01
 import { embed } from "../../lib/embeddings.js";
-import { mongo, db } from "./db.js";
+import { mongo, db } from "../../lib/mongo.js";
 
 const args = process.argv.slice(2);
 const weekIndex = args.indexOf("--week");

@@ -3,7 +3,7 @@
 import { readFileSync, globSync } from "node:fs";
 import { embed, DIMENSIONS, EMBEDDING_MODEL } from "../../lib/embeddings.js";
 import { chunkBySize } from "../../lib/chunking.js";
-import { mongo, db, waitForSearchIndex } from "./db.js";
+import { mongo, db, waitForSearchIndex } from "../../lib/mongo.js";
 
 const collection = db.collection("lesson_chunks");
 const INDEX_NAME = "lesson_vector_index";

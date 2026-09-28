@@ -48,7 +48,7 @@ npm run day24 -- "how do I stream answers to the browser?" --week week-01
    ```
 
    `numDimensions` must match the embedding model exactly. `week` is declared as a filter field so searches can narrow by it.
-3. The index is built in the background, so `waitForSearchIndex()` in [`db.js`](db.js) waits until it's `queryable`.
+3. The index is built in the background, so `waitForSearchIndex()` in [`lib/mongo.js`](../../lib/mongo.js) waits until it's `queryable`.
 
 **[`search.js`](search.js)**
 

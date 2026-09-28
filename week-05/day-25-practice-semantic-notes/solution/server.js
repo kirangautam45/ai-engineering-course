@@ -3,7 +3,7 @@
 import express from "express";
 import { ObjectId } from "mongodb";
 import { embed, DIMENSIONS } from "../../../lib/embeddings.js";
-import { mongo, db, waitForSearchIndex } from "../../day-24-vector-database/db.js";
+import { mongo, db, waitForSearchIndex } from "../../../lib/mongo.js";
 
 const notes = db.collection("notes");
 const INDEX_NAME = "notes_vector_index";

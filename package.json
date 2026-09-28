@@ -32,7 +32,12 @@
     "day24:setup": "node week-05/day-24-vector-database/setup.js",
     "day24": "node week-05/day-24-vector-database/search.js",
     "day25": "node week-05/day-25-practice-semantic-notes/solution/server.js",
-    "day25:samples": "node week-05/day-25-practice-semantic-notes/load-samples.js"
+    "day25:samples": "node week-05/day-25-practice-semantic-notes/load-samples.js",
+    "day26": "node week-06/day-26-how-rag-works/index.js",
+    "day27": "node week-06/day-27-ingestion/ingest.js",
+    "day28": "node week-06/day-28-retrieval-answering/ask.js",
+    "day29": "node week-06/day-29-citations/cite.js",
+    "day30": "node week-06/day-30-practice-docuchat/solution/server.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -41,6 +46,8 @@
     "express": "^5.2.1",
     "mongodb": "^7.6.0",
     "mongoose": "^9.10.2",
+    "multer": "^2.4.0",
+    "unpdf": "^1.8.1",
     "zod": "^4.6.5"
   }
 }

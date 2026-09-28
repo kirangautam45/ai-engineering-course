@@ -103,6 +103,11 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 28 | [Retrieval and answering](week-06/day-28-retrieval-answering) | `npm run day28 -- "question"` |
 | 29 | [Citations](week-06/day-29-citations) | `npm run day29 -- "question"` |
 | 30 | [🛠️ Practice: DocuChat (capstone 1)](week-06/day-30-practice-docuchat) | `npm run day30` |
+| 31 | [Hybrid search](week-07/day-31-hybrid-search) | `npm run day31` |
+| 32 | [Reranking](week-07/day-32-reranking) | `npm run day32` |
+| 33 | [Query rewriting](week-07/day-33-query-rewriting) | `npm run day33` |
+| 34 | [Prompt caching and cost control](week-07/day-34-prompt-caching) | `npm run day34` |
+| 35 | [🛠️ Practice: DocuChat 2](week-07/day-35-practice-better-docuchat) | `npm run day35` |
 
 More weeks are added as the course runs. Watch the repo to get updates.
 

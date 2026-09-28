@@ -1,12 +1,13 @@
 // Day 12 — Streaming to the browser with Server-Sent Events (SSE)
 // Run: npm run day12, then open http://localhost:3000
+import { fileURLToPath } from "node:url";
 import express from "express";
 import { client, MODEL } from "../../lib/claude.js";
 import { validateMessages } from "../day-11-express-chat-api/validate.js";
 
 const app = express();
 app.use(express.json({ limit: "20kb" }));
-app.use(express.static(new URL("./public", import.meta.url).pathname)); // serves index.html
+app.use(express.static(fileURLToPath(new URL("./public", import.meta.url)))); // serves index.html
 
 const SYSTEM = "You are a friendly assistant for students. Keep answers clear. Use Markdown when it helps.";
 

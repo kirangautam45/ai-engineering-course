@@ -284,38 +284,43 @@
 
 ## Week 7 — Better RAG (Days 31–35)
 
-### Day 31 — Hybrid search
+### Day 31 — Hybrid search ✅
 **Objective:** Combine keyword and vector search.
 **Teach:**
 - Vector search misses exact terms like codes, names and error messages. Keyword search catches them.
 - Merge the two result lists with reciprocal rank fusion.
 **Homework:** Find three questions where hybrid beats vector-only search.
+**Code:** [week-07/day-31-hybrid-search](week-07/day-31-hybrid-search)
 
-### Day 32 — Reranking
+### Day 32 — Reranking ✅
 **Objective:** Improve the order of retrieved chunks.
 **Teach:**
 - Retrieve 20 chunks, rerank them, keep the top 5.
-- Use a reranker model, or ask the LLM to score relevance.
+- Use a local cross-encoder reranker (free), a hosted reranker, or ask the LLM to score relevance.
 **Homework:** Measure answer quality before and after reranking.
+**Code:** [week-07/day-32-reranking](week-07/day-32-reranking)
 
-### Day 33 — Query rewriting
+### Day 33 — Query rewriting ✅
 **Objective:** Fix bad user questions before searching.
 **Teach:**
 - Follow-up questions like "what about the second one?" need the chat history to be searchable.
 - Rewrite the query, or generate several queries and merge the results.
 **Homework:** Add query rewriting to DocuChat's chat mode.
+**Code:** [week-07/day-33-query-rewriting](week-07/day-33-query-rewriting)
 
-### Day 34 — Prompt caching and cost control
+### Day 34 — Prompt caching and cost control ✅
 **Objective:** Cut the cost of repeated large prompts.
 **Teach:**
 - Prompt caching: a stable prefix (system prompt plus documents) is billed at a fraction of the price on repeat calls.
 - Put stable content first and changing content last. Verify with `usage.cache_read_input_tokens`.
 - Track the cost of every request in your database.
 **Homework:** Show a cost-per-conversation dashboard.
+**Code:** [week-07/day-34-prompt-caching](week-07/day-34-prompt-caching)
 
-### Day 35 — 🛠️ Practice: upgrade DocuChat
+### Day 35 — 🛠️ Practice: upgrade DocuChat ✅
 **Objective:** Apply Week 7 to the capstone.
 **Build:** Add hybrid search, reranking and caching to DocuChat, and compare before and after on the same 20 questions.
+**Code:** [week-07/day-35-practice-better-docuchat](week-07/day-35-practice-better-docuchat)
 
 ---
 

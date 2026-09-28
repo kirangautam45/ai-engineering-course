@@ -37,7 +37,13 @@
     "day27": "node week-06/day-27-ingestion/ingest.js",
     "day28": "node week-06/day-28-retrieval-answering/ask.js",
     "day29": "node week-06/day-29-citations/cite.js",
-    "day30": "node week-06/day-30-practice-docuchat/solution/server.js"
+    "day30": "node week-06/day-30-practice-docuchat/solution/server.js",
+    "day31": "node week-07/day-31-hybrid-search/index.js",
+    "day32": "node week-07/day-32-reranking/index.js",
+    "day33": "node week-07/day-33-query-rewriting/index.js",
+    "day34": "node week-07/day-34-prompt-caching/index.js",
+    "day35": "node week-07/day-35-practice-better-docuchat/solution/server.js",
+    "day35:compare": "node week-07/day-35-practice-better-docuchat/solution/compare.js"
   },
   "license": "MIT",
   "dependencies": {

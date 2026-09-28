@@ -12,13 +12,13 @@ LLMs don't read characters or words — they read **tokens**. Every limit and ev
 ## Run it
 
 ```bash
-npm run day2
-npm run day2 -- "नमस्ते! यो वाक्यमा कति टोकन छन्?"
+python run.py day2
+python run.py day2 "नमस्ते! यो वाक्यमा कति टोकन छन्?"
 ```
 
 ## Walkthrough
 
-1. `client.messages.countTokens()` tells you the size of a prompt without running the model.
+1. `client.messages.count_tokens()` tells you the size of a prompt without running the model.
 2. `response.usage` reports the real input and output tokens for the call.
 3. We multiply by the price per million tokens to get the cost in dollars.
 

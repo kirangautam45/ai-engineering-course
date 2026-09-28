@@ -12,7 +12,7 @@ Today you build a chatbot in the terminal that remembers the conversation.
 ## Run it
 
 ```bash
-npm run day3
+python run.py day3
 ```
 
 Try: "What is a variable?", then "Show me an example" — the tutor knows what "an example" refers to because the history is sent along.

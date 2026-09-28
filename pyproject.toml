@@ -1,0 +1,18 @@
+[project]
+name = "ai-engineering-course"
+version = "1.0.0"
+description = "Free 45-day AI engineering course in Python: LLM APIs, prompt engineering, tool calling, embeddings and RAG"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "anthropic>=1.8",
+    "python-dotenv>=1.0",
+]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+# `pip install -e .` makes the shared helpers in ailib/ importable from every lesson
+[tool.setuptools]
+packages = ["ailib"]

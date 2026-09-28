@@ -12,15 +12,15 @@ Long answers can take many seconds. Streaming shows the text **as it is written*
 ## Run it
 
 ```bash
-npm run day4
-npm run day4 -- "Explain recursion with a story about Russian dolls"
+python run.py day4
+python run.py day4 "Explain recursion with a story about Russian dolls"
 ```
 
 ## Walkthrough
 
-1. `client.messages.stream()` returns a stream you loop over with `for await`.
-2. Each `text_delta` event carries a small piece of text. We print it with `process.stdout.write` (no newline).
-3. `await stream.finalMessage()` returns the same object `messages.create()` would, including `usage`.
+1. `with client.messages.stream(...) as stream:` opens a stream. The `with` block makes sure the connection is closed afterwards.
+2. `stream.text_stream` gives you each small piece of text as it arrives. We print it with `print(text, end="", flush=True)`: no newline, and shown immediately.
+3. `stream.get_final_message()` returns the same object `messages.create()` would, including `usage`.
 
 ## Try it
 

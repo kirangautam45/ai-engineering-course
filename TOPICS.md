@@ -172,7 +172,7 @@
 ### Day 18 — The tool runner ✅
 **Objective:** Use the SDK's tool runner instead of a hand-written loop.
 **Teach:**
-- `betaZodTool` + `client.beta.messages.toolRunner()`: define the tools and the SDK runs the loop.
+- `@beta_tool` + `client.beta.messages.tool_runner()`: define the tools as typed Python functions and the SDK runs the loop.
 - Limit the number of iterations so a confused model can't loop forever.
 - When to build an "agent" and when a single call is enough.
 **Homework:** Rewrite Day 17 with the tool runner.

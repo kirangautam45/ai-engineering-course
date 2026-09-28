@@ -11,6 +11,8 @@ dependencies = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.30",
     "pymongo>=4.13",
+    # Week 4 onward: calling other web APIs from tools
+    "httpx>=0.27",
 ]
 
 [build-system]

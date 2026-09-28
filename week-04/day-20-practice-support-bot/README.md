@@ -35,13 +35,13 @@ HELPDESK_PASSWORD=your-test-password
 
 ## Requirements
 
-[`helpdesk-api.js`](helpdesk-api.js) is ready for you: it logs in and wraps the REST endpoints. Build `bot.js` with the tool runner (Day 18):
+[`helpdesk_api.py`](helpdesk_api.py) is ready for you: it logs in and wraps the REST endpoints. Build `main.py` with the tool runner (Day 18):
 
 1. **Tools**: `list_tickets` (optional status filter), `get_ticket`, `create_ticket`, `update_ticket_status`.
 2. **No delete tool.** The bot doesn't need one.
-3. **Confirmation**: creating or updating a ticket asks the user `(y/n)` first, in code (Day 19). The model may ask for two actions at once, so use `confirm()` from [`lib/terminal.js`](../../lib/terminal.js), which asks one question at a time.
+3. **Confirmation**: creating or updating a ticket asks the user `(y/n)` first, in code (Day 19). Use `confirm()` from [`ailib/terminal.py`](../../ailib/terminal.py).
 4. **Multi-turn chat**: the bot remembers the conversation, including earlier tool results.
-5. **The login token never goes to the model.** It stays inside `helpdesk-api.js`.
+5. **The login token never goes to the model.** It stays inside `helpdesk_api.py`.
 6. **System prompt**: check for duplicates before creating; ask a follow-up if the problem is vague; never invent ticket ids.
 
 ## Checklist
@@ -55,10 +55,10 @@ HELPDESK_PASSWORD=your-test-password
 
 ## Reference solution
 
-A working version is in [`solution/bot.js`](solution/bot.js). Try it yourself first, then compare:
+A working version is in [`solution/main.py`](solution/main.py). Try it yourself first, then compare:
 
 ```bash
-npm run day20
+python run.py day20
 ```
 
 ## Stretch goals

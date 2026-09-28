@@ -12,8 +12,8 @@ A model can only produce text. It can't browse the web, read your database or ev
 ## Run it
 
 ```bash
-npm run day16
-npm run day16 -- "If 3 friends split a bill of NPR 2,450 and add a 10% tip, how much does each pay?"
+python run.py day16
+python run.py day16 "If 3 friends split a bill of NPR 2,450 and add a 10% tip, how much does each pay?"
 ```
 
 You'll see every tool call as it happens (the model may split the steps differently):
@@ -42,7 +42,7 @@ Your code ◀─ "The total is NPR 54,278.82" ─────── Model    sto
 ## Walkthrough
 
 1. **`tools`** describes `calculate` with a JSON schema. The `description` matters a lot: it tells the model *when* to use the tool.
-2. **`calculate()`** is plain JavaScript. We don't use `eval()` on text from the model, because that would let it run any code on your machine.
+2. **`calculate()`** is plain Python. We don't use `eval()` on text from the model, because that would let it run any code on your machine.
 3. **The loop** keeps going while `stop_reason` is `"tool_use"`. It's capped at 10 turns so a confused model can't loop forever.
 4. **Each `tool_result`** carries the `tool_use_id` of the request it answers.
 5. **Errors** go back with `is_error: true`. Ask "What is 5 divided by 0?" and watch the model explain the problem instead of crashing.

@@ -4,8 +4,8 @@ On Days 16 and 17 you wrote the tool loop by hand: call the model, check `stop_r
 
 ## What you will learn
 
-- Defining a tool as **one object** with `betaZodTool`: description, Zod schema and `run` function together
-- `client.beta.messages.toolRunner()`: the SDK runs the loop, including parallel calls and errors
+- Defining a tool as **one decorated function** with `@beta_tool`: the type hints become the schema, the docstring becomes the description
+- `client.beta.messages.tool_runner()`: the SDK runs the loop, including errors
 - `max_iterations`: a safety limit so a confused model can't loop forever (or spend all your credit)
 - Watching each step by looping over the runner
 - When you need an "agent" at all, and when one API call is enough
@@ -13,21 +13,42 @@ On Days 16 and 17 you wrote the tool loop by hand: call the model, check `stop_r
 ## Run it
 
 ```bash
-npm run day18
-npm run day18 -- "I'm flying from Delhi to Kathmandu with 20,000 INR. How much is that in NPR, and what's the weather like when I land?"
+python run.py day18
+python run.py day18 "I'm flying from Delhi to Kathmandu with 20,000 INR. How much is that in NPR, and what's the weather like when I land?"
 ```
 
 ## Day 17 vs Day 18
 
 | | Day 17 (manual loop) | Day 18 (tool runner) |
 |---|---|---|
-| Tool definition | JSON schema + separate `handlers` map | One `betaZodTool` object |
-| Input checking | None: you trust the model's input | Zod checks it before `run` is called |
+| Tool definition | JSON schema + separate `handlers` map | One `@beta_tool` function |
+| Descriptions | Written in the JSON schema | The docstring (`Args:` section) |
+| Input checking | None: you trust the model's input | Pydantic checks the type hints before your function runs |
 | The loop | ~20 lines you write | Built in |
-| Parallel calls | You write `Promise.all` | Built in |
-| Errors | You catch them and set `is_error` | A thrown error becomes an `is_error` result automatically |
+| Several calls at once | You run them in threads | Run one after another (simpler, a bit slower) |
+| Errors | You catch them and set `is_error` | A raised exception becomes an `is_error` result automatically |
 
-The same `getWeather` and `convertCurrency` functions from Day 17 are reused unchanged.
+The same `get_weather` and `convert_currency` functions from Day 17 are reused unchanged.
+
+```python
+@beta_tool
+def convert_currency(
+    amount: Annotated[float, Field(gt=0)],          # must be more than 0
+    from_currency: Annotated[str, Field(min_length=3, max_length=3)],
+    to_currency: Annotated[str, Field(min_length=3, max_length=3)],
+) -> str:
+    """Convert an amount of money between currencies using today's exchange rate.
+
+    Args:
+        amount: How much money (more than 0).
+        from_currency: 3-letter currency code, e.g. USD.
+        to_currency: 3-letter currency code, e.g. NPR.
+    """
+```
+
+(The parameters are `from_currency`/`to_currency`, not `from`/`to`: `from` is a reserved word in Python.)
+
+When a tool raises an error, the SDK also prints it (with a traceback) to your terminal. That's just logging: the model still receives the error as an `is_error` result and carries on.
 
 ## When do you need an agent?
 
@@ -39,10 +60,10 @@ A loop where the model decides which tools to call is an **agent**. Agents are p
 
 ## Try it
 
-- Set `max_iterations: 1`. What does the final message look like?
-- Ask for a negative amount ("convert -50 USD"). What does the Zod schema do?
-- Add the `get_forecast` tool from your Day 17 homework as a `betaZodTool`.
+- Set `max_iterations=1`. What does the final message look like?
+- Ask for a negative amount ("convert -50 USD"). What does `Field(gt=0)` do?
+- Add the `get_forecast` tool from your Day 17 homework as a `@beta_tool`.
 
 ## Homework
 
-Rewrite your Day 16 calculator with `betaZodTool` and the tool runner. How many lines shorter is it?
+Rewrite your Day 16 calculator with `@beta_tool` and the tool runner. How many lines shorter is it?

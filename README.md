@@ -108,6 +108,11 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 33 | [Query rewriting](week-07/day-33-query-rewriting) | `npm run day33` |
 | 34 | [Prompt caching and cost control](week-07/day-34-prompt-caching) | `npm run day34` |
 | 35 | [🛠️ Practice: DocuChat 2](week-07/day-35-practice-better-docuchat) | `npm run day35` |
+| 36 | [Why evals matter](week-08/day-36-why-evals) | `npm run day36` |
+| 37 | [LLM-as-judge](week-08/day-37-llm-as-judge) | `npm run day37` |
+| 38 | [Measuring RAG](week-08/day-38-measuring-rag) | `npm run day38` |
+| 39 | [Guardrails and monitoring](week-08/day-39-guardrails-monitoring) | `npm run day39` |
+| 40 | [🛠️ Practice: an eval suite](week-08/day-40-practice-eval-suite) | `npm run eval` |
 
 More weeks are added as the course runs. Watch the repo to get updates.
 

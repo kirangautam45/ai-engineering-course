@@ -326,39 +326,44 @@
 
 ## Week 8 — Evaluation and Production (Days 36–40)
 
-### Day 36 — Why evals matter
+### Day 36 — Why evals matter ✅
 **Objective:** Build a test set for an AI feature.
 **Teach:**
 - "It looked fine when I tried it" isn't testing. Every prompt change can break something.
 - Build a golden dataset: real questions, expected answers and edge cases.
 **Homework:** Write 30 test questions for DocuChat.
+**Code:** [week-08/day-36-why-evals](week-08/day-36-why-evals)
 
-### Day 37 — LLM-as-judge
+### Day 37 — LLM-as-judge ✅
 **Objective:** Grade open-ended answers automatically.
 **Teach:**
 - Use exact-match checks where possible and a model with a clear rubric where not.
 - Check your judge against human grades before trusting it.
 **Homework:** A judge that scores answers for correctness and whether they are grounded in the sources.
+**Code:** [week-08/day-37-llm-as-judge](week-08/day-37-llm-as-judge)
 
-### Day 38 — Measuring RAG
+### Day 38 — Measuring RAG ✅
 **Objective:** Measure retrieval and generation separately.
 **Teach:**
 - Retrieval: was the right chunk in the top-k?
 - Generation: is the answer faithful to the chunks? Does it cite them?
 - Find the weak step before trying to fix it.
 **Homework:** Report both metrics for DocuChat.
+**Code:** [week-08/day-38-measuring-rag](week-08/day-38-measuring-rag)
 
-### Day 39 — Guardrails and monitoring
+### Day 39 — Guardrails and monitoring ✅
 **Objective:** Make an AI feature safe to run in public.
 **Teach:**
 - Rate limiting per user, input length limits and output checks.
 - Log prompts, responses, tokens and latency, but not secrets or personal data.
 - Handle refusals, timeouts and API outages gracefully.
 **Homework:** Add rate limiting and structured logging to DocuChat.
+**Code:** [week-08/day-39-guardrails-monitoring](week-08/day-39-guardrails-monitoring)
 
-### Day 40 — 🛠️ Practice: eval suite
+### Day 40 — 🛠️ Practice: eval suite ✅
 **Objective:** Automate quality checks.
 **Build:** `npm run eval` runs the 30 test questions, grades them and prints a score. Run it before and after every prompt change.
+**Code:** [week-08/day-40-practice-eval-suite](week-08/day-40-practice-eval-suite)
 
 ---
 

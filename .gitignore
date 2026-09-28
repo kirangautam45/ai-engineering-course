@@ -3,3 +3,6 @@ node_modules/
 .DS_Store
 dist/
 index.json
+logs/
+last-run.json
+week-08/day-40-practice-eval-suite/reports/

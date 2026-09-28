@@ -152,7 +152,7 @@
 ## Week 4 — Tool Use and Agents (Days 16–20)
 
 ### Day 16 — What is tool calling? ✅
-**Objective:** Let the model call a JavaScript function.
+**Objective:** Let the model call a Python function.
 **Teach:**
 - The model can't browse, calculate or read your database on its own. Tools give it hands.
 - Define a tool with a name, description and JSON schema. When `stop_reason` is `"tool_use"`, run the function and send back a `tool_result`.

@@ -57,7 +57,7 @@
 
 ## Week 2 — Prompt Engineering (Days 6–10)
 
-### Day 6 — Anatomy of a good prompt
+### Day 6 — Anatomy of a good prompt ✅
 **Objective:** Rewrite a vague prompt into a clear, specific one and measure the difference.
 **Teach:**
 - The "new employee" test: would a smart person with no context understand what you want?
@@ -65,8 +65,9 @@
 - Explain *why* a rule exists, not only what the rule is. Models follow reasons better than bare commands.
 - Live exercise: improve "summarize this" in three rounds and compare outputs side by side.
 **Homework:** Take three prompts you use in daily life and rewrite each one using the anatomy.
+**Code:** [week-02/day-06-prompt-anatomy](week-02/day-06-prompt-anatomy)
 
-### Day 7 — Examples and structure (few-shot, XML tags)
+### Day 7 — Examples and structure (few-shot, XML tags) ✅
 **Objective:** Use examples and tags to get consistent output.
 **Teach:**
 - Zero-shot vs few-shot: show one to three examples of the output you want.
@@ -74,8 +75,9 @@
 - Put long documents first and the question last.
 - Pitfall: models copy examples too closely. Vary your examples.
 **Homework:** A few-shot prompt that turns messy customer emails into a clean ticket summary.
+**Code:** [week-02/day-07-examples-xml](week-02/day-07-examples-xml)
 
-### Day 8 — Thinking and effort
+### Day 8 — Thinking and effort ✅
 **Objective:** Control how much the model reasons before answering.
 **Teach:**
 - Chain-of-thought: why "think step by step" helped older models.
@@ -83,8 +85,9 @@
 - `output_config.effort` (`low` → `max`) trades cost and speed against quality. Compare `low` vs `high` on a logic puzzle.
 - When to use low effort (classification, chat) vs high effort (hard reasoning, code).
 **Homework:** Run five puzzles at `low` and `high` effort and record accuracy, tokens and time.
+**Code:** [week-02/day-08-thinking-effort](week-02/day-08-thinking-effort)
 
-### Day 9 — Structured output (JSON)
+### Day 9 — Structured output (JSON) ✅
 **Objective:** Get reliable JSON that your code can use.
 **Teach:**
 - Why "reply in JSON" is not enough: stray text, missing fields.
@@ -92,10 +95,12 @@
 - Validate with Zod anyway, and handle failures gracefully.
 - Use case: extract name, email, issue and priority from a support email.
 **Homework:** An extractor that turns a job posting into `{ title, company, skills[], salary }`.
+**Code:** [week-02/day-09-structured-output](week-02/day-09-structured-output)
 
-### Day 10 — 🛠️ Practice: prompt library with tests
+### Day 10 — 🛠️ Practice: prompt library with tests ✅
 **Objective:** Treat prompts like code: versioned, reviewed and tested.
 **Build:** A `prompts/` folder with three prompts (summarizer, extractor, classifier), each with five test inputs and expected results, plus a script that runs them all and prints a pass/fail table.
+**Code:** [week-02/day-10-practice-prompt-tests](week-02/day-10-practice-prompt-tests)
 
 ---
 

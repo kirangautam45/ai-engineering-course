@@ -78,6 +78,11 @@ Every fifth day is a **practice day**: no new theory, students build while the i
 | 3 | [System prompts and multi-turn chat](week-01/day-03-roles-chat) | `npm run day3` |
 | 4 | [Streaming responses](week-01/day-04-streaming) | `npm run day4` |
 | 5 | [🛠️ Practice: a reliable `ask` CLI](week-01/day-05-practice-ask-cli) | `npm run day5` |
+| 6 | [Anatomy of a good prompt](week-02/day-06-prompt-anatomy) | `npm run day6` |
+| 7 | [Few-shot examples and XML tags](week-02/day-07-examples-xml) | `npm run day7` |
+| 8 | [Thinking and effort](week-02/day-08-thinking-effort) | `npm run day8` |
+| 9 | [Structured output (JSON)](week-02/day-09-structured-output) | `npm run day9` |
+| 10 | [🛠️ Practice: prompt library with tests](week-02/day-10-practice-prompt-tests) | `npm run day10` |
 
 More weeks are added as the course runs. Watch the repo to get updates.
 

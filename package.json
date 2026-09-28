@@ -12,10 +12,16 @@
     "day2": "node week-01/day-02-tokens-cost/index.js",
     "day3": "node week-01/day-03-roles-chat/index.js",
     "day4": "node week-01/day-04-streaming/index.js",
-    "day5": "node week-01/day-05-practice-ask-cli/index.js"
+    "day5": "node week-01/day-05-practice-ask-cli/index.js",
+    "day6": "node week-02/day-06-prompt-anatomy/index.js",
+    "day7": "node week-02/day-07-examples-xml/index.js",
+    "day8": "node week-02/day-08-thinking-effort/index.js",
+    "day9": "node week-02/day-09-structured-output/index.js",
+    "day10": "node week-02/day-10-practice-prompt-tests/index.js"
   },
   "license": "MIT",
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.128.0"
+    "@anthropic-ai/sdk": "^0.128.0",
+    "zod": "^4.6.5"
   }
 }
